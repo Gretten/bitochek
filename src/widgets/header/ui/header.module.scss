@@ -1,3 +1,19 @@
 .header {
     flex: 0 0 100px;
+
+    &-line {
+        display: flex;
+    }
+
+    &-logo {
+        flex: 0 1 50px;
+    }
+
+    &-navbar {
+        flex: 1 1 300px;
+    }
+
+    &-login {
+        flex: 0 1 50px
+    }
 }
