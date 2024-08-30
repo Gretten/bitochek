@@ -8,13 +8,11 @@ const AppRouter = () => {
   return (
     <Router>
       <Suspense fallback={<div>Loading...</div>}>
-        <Layout>
           <Routes>
             {routes.map(({ path, component }, index) => (
               <Route key={index} path={path} element={component} />
             ))}
           </Routes>
-        </Layout>
       </Suspense>
     </Router>
   );

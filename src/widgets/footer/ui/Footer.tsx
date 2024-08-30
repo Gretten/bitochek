@@ -1,7 +1,9 @@
+import classes from './footer.module.scss';
+
 export const Footer = () => {
 
     return (
-        <footer>
+        <footer className={classes['footer']}>
             Hello Footer!
         </footer>
     )
