@@ -1,7 +1,19 @@
-export const PriceWidget = () => {
+export const PriceWidget = ({ header, prices }) => {
     return (
         <div>
-            Привет, виджет цен!
+            <h3>{header}</h3>
+            {
+                prices.map(({ currency, value }) => (
+                    <div key={currency}>
+                        <span>{currency}</span>
+                        <span>:</span>
+                        <span>{value}</span>
+                    </div>
+                ))
+            }
+            <div>
+                +
+            </div>
         </div>
     )
 }
