@@ -5,7 +5,6 @@ import Tab from '@mui/material/Tab';
 import { Link } from 'react-router-dom';
 
 export const Header = () => {
-
     return (
         <header className={classes['header']}>
             <div className={`${common['container']} ${classes['header-line']}`}>
@@ -14,13 +13,13 @@ export const Header = () => {
                 </div>
                 <nav className={classes['header-navbar']}>
                     <Tabs>
-                        <Tab label="Portfolio" value="/" to="/" component={Link} />
+                        <Tab label="Portfolio" value="/portfolio" to="/portfolio" component={Link} />
+                        <Tab label="Asset" value="/asset" to="/asset" component={Link} />
                         <Tab label="News" value="/news" to="/news" component={Link} />
-                        <Tab label="Trash" value="/asset" to="/asset" component={Link} />
                     </Tabs>
                 </nav>
                 <div className={classes['header-login']}>
-                    Login!
+                    <Tab label="Login" value="/login" to="/login" component={Link} />
                 </div>
             </div>
         </header>

@@ -1,12 +1,11 @@
 import AppRouter from "@/app/router/AppRouter"
-import { Layout } from '@/app/layout/Layout';
+import { Suspense } from "react";
 
 function App() {
-
   return (
-    <Layout>
-      <AppRouter />
-    </Layout>
+    <Suspense fallback={<div>Loading...</div>}>
+        <AppRouter />
+    </Suspense>
   )
 }
 
