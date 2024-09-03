@@ -1,3 +1,4 @@
+import { Routes } from '@/shared/routes';
 import { lazy } from 'react';
 import {
   createBrowserRouter,
@@ -9,25 +10,25 @@ const NotFound = lazy(() => import('@/pages/notFound'));
 const Asset = lazy(() => import('@/pages/asset'));
 const Layout = lazy(() => import('@/app/layout'));
 
-const routes = createBrowserRouter([
+const routerConfig = createBrowserRouter([
   {
-    path: '/',
+    path: Routes.Main,
     element: <Layout />,
     children: [
       {
-        path: '/portfolio',
+        path: Routes.Portfolio,
         element: <Portfolio />
       },
       {
-        path: '/news',
+        path: Routes.News,
         element: <News />
       },
       {
-        path: '/asset',
+        path: Routes.Asset,
         element: <Asset />
       },
       {
-        path: '*',
+        path: Routes.Other,
         element: <NotFound />
       },
     ]
@@ -35,4 +36,4 @@ const routes = createBrowserRouter([
 
 ]);
 
-export default routes;
+export default routerConfig;

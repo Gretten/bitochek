@@ -7,6 +7,9 @@
 
     &-logo {
         flex: 0 1 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     &-navbar {
