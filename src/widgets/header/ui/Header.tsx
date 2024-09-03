@@ -15,13 +15,13 @@ export const Header = () => {
                 </div>
                 <nav className={classes['header-navbar']}>
                     <Tabs>
-                        <Tab label="Portfolio" value={Routes.Portfolio} to={Routes.Portfolio} component={Link} />
-                        <Tab label="Asset" value={Routes.Asset} to={Routes.Asset} component={Link} />
-                        <Tab label="News" value={Routes.News} to={Routes.News} component={Link} />
+                        <Tab label="Портфолио" value={Routes.Portfolio} to={Routes.Portfolio} component={Link} />
+                        <Tab label="Валюта" value={Routes.Asset} to={Routes.Asset} component={Link} />
+                        <Tab label="Новости" value={Routes.News} to={Routes.News} component={Link} />
                     </Tabs>
                 </nav>
                 <div className={classes['header-login']}>
-                    <Tab label="Login" value={Routes.Login} to={Routes.Login} component={Link} />
+                    <Tab label="Войти" value={Routes.Login} to={Routes.Login} component={Link} />
                 </div>
             </div>
         </header>
