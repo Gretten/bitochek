@@ -5,20 +5,14 @@ import { Chart, LineController, LineElement, PointElement, LinearScale, Title, C
 
 Chart.register(LineController, LineElement, PointElement, LinearScale, CategoryScale, Title);
 
-export const SimpleLineChart = ({ height = '100px', width = '150px'}) => {
+export const SimpleLineChart = () => {
   useEffect(() => {
-    const canvas = document?.getElementById('myChart') as HTMLCanvasElement;
+    const canvas = document?.getElementById('my-chart') as HTMLCanvasElement;
     const ctx = canvas?.getContext('2d');
 
     if(!ctx) {
         return;
     }
-
-    if (Chart.getChart(ctx)) {
-        Chart.getChart(ctx)!.destroy();
-      }
-
-    // Создаём новый график
     const chart = new Chart(ctx, {
       type: 'line',
       data: {
@@ -32,6 +26,7 @@ export const SimpleLineChart = ({ height = '100px', width = '150px'}) => {
         }]
       },
       options: {
+        maintainAspectRatio: false,
         scales: {
             x: {
               display: false, 
@@ -62,6 +57,6 @@ export const SimpleLineChart = ({ height = '100px', width = '150px'}) => {
   }, []);
 
   return (
-    <canvas id="myChart" width={width} height={height}></canvas>
+    <canvas id="my-chart" height="250" width="250"></canvas>
   );
 };

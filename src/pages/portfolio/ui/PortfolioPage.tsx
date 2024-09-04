@@ -40,13 +40,13 @@ export const PortfolioPage = () => {
             <div className={classes["left-column"]}>
                 <div className={classes["price-widget"]}>
                     <PriceWidget 
-                        header="Цена" 
+                        header="ЦЕНА" 
                         prices={prices}
                     />
                 </div>
                 <div className={classes["performance-widget"]}>
                     <PerformanceWidget 
-                        header="Производительность"
+                        header="ПРОИЗВОДИТЕЛЬНОСТЬ"
                         data={[]} 
                     />
                 </div>
@@ -54,7 +54,7 @@ export const PortfolioPage = () => {
             <div className={classes["right-column"]}>
                 <div className={classes["assets-widget"]}>
                     <AssetsWidget 
-                        header="Перечень активов"
+                        header="АКТИВЫ"
                         assets={assets}
                     />
                 </div>
