@@ -6,6 +6,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import classes from './classes.module.scss'
+import Button from '@mui/material/Button/Button';
 
 export const AssetTable = ({ header, type, data }) => {
 
@@ -25,12 +26,18 @@ export const AssetTable = ({ header, type, data }) => {
         createData('Tether USD', 262, 16.0, 24, 6.0),
         createData('Solana', 305, 3.7, 67, 4.3),
         createData('Doge', 356, 16.0, 49, 3.9),
+        createData('Bitcoin', 159, 6.0, 24, 4.0),
+        createData('Ethereum', 237, 9.0, 37, 4.3),
+        createData('Tether USD', 262, 16.0, 24, 6.0),
+        createData('Solana', 305, 3.7, 67, 4.3),
+        createData('Doge', 356, 16.0, 49, 3.9),
       ];
 
     return (
       <div className={classes['table-container']}>
         <div className={classes['table-header']}>
           <h4>{header}</h4>
+          <Button color="secondary">ДОБАВИТЬ</Button>
         </div>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">

@@ -1,9 +1,11 @@
 .table {
     &-container {
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
     &-header {
         margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
     }
 }
