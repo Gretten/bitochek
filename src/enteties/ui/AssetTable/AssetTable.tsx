@@ -5,8 +5,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import classes from './classes.module.scss'
 
-export const AssetTable = () => {
+export const AssetTable = ({ header, type, data }) => {
 
     function createData(
         name: string,
@@ -19,42 +20,56 @@ export const AssetTable = () => {
       }
       
       const rows = [
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-        createData('Eclair', 262, 16.0, 24, 6.0),
-        createData('Cupcake', 305, 3.7, 67, 4.3),
-        createData('Gingerbread', 356, 16.0, 49, 3.9),
+        createData('Bitcoin', 159, 6.0, 24, 4.0),
+        createData('Ethereum', 237, 9.0, 37, 4.3),
+        createData('Tether USD', 262, 16.0, 24, 6.0),
+        createData('Solana', 305, 3.7, 67, 4.3),
+        createData('Doge', 356, 16.0, 49, 3.9),
       ];
 
     return (
+      <div className={classes['table-container']}>
+        <div className={classes['table-header']}>
+          <h4>{header}</h4>
+        </div>
         <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Dessert (100g serving)</TableCell>
-              <TableCell align="right">Calories</TableCell>
-              <TableCell align="right">Fat&nbsp;(g)</TableCell>
-              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-              <TableCell align="right">Protein&nbsp;(g)</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow
-                key={row.name}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-                <TableCell align="right">{row.protein}</TableCell>
+          <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Название</TableCell>
+                <TableCell align="right">Количество</TableCell>
+                <TableCell align="right">Цена (USD)</TableCell>
+                <TableCell align="right">Цена (RUB)</TableCell>
+                <TableCell align="right">График за 7 дней</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow
+                  key={row.name}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="right">{row.calories}</TableCell>
+                  <TableCell align="right">{row.fat}</TableCell>
+                  <TableCell align="right">{row.carbs}</TableCell>
+                  <TableCell align="right">{row.protein}</TableCell>
+                </TableRow>
+              ))}
+                <TableRow
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >                  
+                <TableCell component="th" scope="row" colSpan={3}>
+                   ИТОГО
+                </TableCell>
+                <TableCell rowSpan={3} />
+                <TableCell align="right">{100000}</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
     )
 }

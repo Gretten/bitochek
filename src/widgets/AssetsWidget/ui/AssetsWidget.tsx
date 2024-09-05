@@ -10,10 +10,24 @@ export const AssetsWidget = ({ header, assets }) => {
                     <span className={classes['header-add-icon']}>+</span>
                 </div>
             </div>
-            
+
             <div className={classes['assets-tables']}>
-                <AssetTable />
-                <AssetTable />
+                <AssetTable
+                    header={"Крипто"}
+                    data={[]}
+                    type="crypto"
+                />
+                <AssetTable
+                    header={"Имущество"}
+                    data={[]}
+                    type="assets"
+                />
+
+                <AssetTable
+                    header={"Фиатные деньги"}
+                    data={[]}
+                    type="assets"
+                />
             </div>
         </div>
     )
