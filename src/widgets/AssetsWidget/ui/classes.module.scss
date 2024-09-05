@@ -1,3 +1,21 @@
+.header {
+    &-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-add {
+        display: flex;
+        align-items: center;
+        
+        &-icon {
+            font-size: 30px;
+            color: chartreuse;
+            cursor: pointer;
+        }
+    }
+}
+
 .assets-tables {
     display: flex;
     flex-direction: column;
