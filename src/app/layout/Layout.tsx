@@ -1,8 +1,8 @@
 import { Footer } from "@/widgets/footer";
 import { Header } from '@/widgets/header';
-import classes from './layout.module.scss';
 import { Outlet } from "react-router-dom";
 import common from '@/shared/styles/shared.module.scss';
+import classes from './layout.module.scss';
 
 export const Layout: React.FC = () => (
     <div id={classes['layout']}>    

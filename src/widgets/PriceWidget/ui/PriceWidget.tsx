@@ -12,9 +12,6 @@ export const PriceWidget = ({ header, prices }) => {
                         <span>{value}</span>
                     </div>
                 ))}
-                <div>
-                +
-                </div>
             </div>
         </div>
     )

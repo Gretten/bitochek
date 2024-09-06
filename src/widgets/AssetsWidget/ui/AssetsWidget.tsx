@@ -1,5 +1,5 @@
 import classes from './classes.module.scss'
-import { AssetTable } from '@/enteties/ui';
+import { AssetTable } from '@/enteties/ui/AssetTable/AssetTable';
 
 export const AssetsWidget = ({ header, assets }) => {
     return (
@@ -26,7 +26,7 @@ export const AssetsWidget = ({ header, assets }) => {
                 <AssetTable
                     header={"Фиатные деньги"}
                     data={[]}
-                    type="assets"
+                    type="fiat"
                 />
             </div>
         </div>

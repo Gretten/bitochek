@@ -26,11 +26,6 @@ export const AssetTable = ({ header, type, data }) => {
         createData('Tether USD', 262, 16.0, 24, 6.0),
         createData('Solana', 305, 3.7, 67, 4.3),
         createData('Doge', 356, 16.0, 49, 3.9),
-        createData('Bitcoin', 159, 6.0, 24, 4.0),
-        createData('Ethereum', 237, 9.0, 37, 4.3),
-        createData('Tether USD', 262, 16.0, 24, 6.0),
-        createData('Solana', 305, 3.7, 67, 4.3),
-        createData('Doge', 356, 16.0, 49, 3.9),
       ];
 
     return (

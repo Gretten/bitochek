@@ -11,6 +11,9 @@ export const PerformanceWidget = ({ header }) => {
             <div className={classes['chart']}>
                  <SimpleLineChart />
             </div>
+            <div className={classes['additional']}>
+                 *Изменение цены портфеля за 7 дней
+            </div>
         </div>
     )
 }

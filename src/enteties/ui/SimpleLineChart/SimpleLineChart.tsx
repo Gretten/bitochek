@@ -1,25 +1,28 @@
 import classes from './classes.module.scss';
-import { useEffect } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 
 import { Chart, LineController, LineElement, PointElement, LinearScale, Title, CategoryScale } from 'chart.js';
 
 Chart.register(LineController, LineElement, PointElement, LinearScale, CategoryScale, Title);
 
-export const SimpleLineChart = () => {
+export const SimpleLineChart = (): ReactElement | null => {
+
+  // const [chart, setChart] = useState<Chart | null>(null);
+
   useEffect(() => {
-    const canvas = document?.getElementById('my-chart') as HTMLCanvasElement;
-    const ctx = canvas?.getContext('2d');
+    const canvas = document.getElementById('my-chart') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d');
 
     if(!ctx) {
         return;
     }
+
     const chart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['Янв', 'Фев', 'Март', 'Апр', 'Май', 'Июнь', 'Июль'],
+        labels: ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'],
         datasets: [{
-          label: 'Моя прямая',
-          data: [65, 59, 80, 81, 56, 55, 40],
+          data: [45, 59, 61, 50, 56, 65, 85],
           borderColor: 'rgba(75, 192, 192, 1)',
           borderWidth: 2,
           tension: 0.2,
@@ -51,12 +54,15 @@ export const SimpleLineChart = () => {
       }
     });
 
+    // setChart(chart);
+
     return () => {
         chart.destroy();
     }
   }, []);
 
   return (
+    // chart ? <canvas id="my-chart" height="250" width="250"></canvas> : null
     <canvas id="my-chart" height="250" width="250"></canvas>
   );
 };
