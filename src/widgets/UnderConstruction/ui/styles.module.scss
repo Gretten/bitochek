@@ -1,27 +1,8 @@
-@keyframes rotate {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
 .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.animated {
-    height: 200px;
-    width: 200px;
-    animation: rotate 10s linear infinite;
-}
-
-.description {
-    font-style: italic;
 }
 
 .header {

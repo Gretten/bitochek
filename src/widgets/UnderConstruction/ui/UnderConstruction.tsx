@@ -1,5 +1,5 @@
 import classes from './styles.module.scss';
-import flower from '@/assets/flower.png'
+import flower from '@/assets/flower-min.png'
 
 export const UnderConstruction = () => {
     return (
