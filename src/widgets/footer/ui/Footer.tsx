@@ -9,16 +9,22 @@ export const Footer = () => {
     return (
         <footer className={classes['footer']}>
             <Divider />
-            <div className={`${common['container']}  ${classes['content-container']}`}>
-                <div>Проект БИТОЧЕК</div>
-                <div>2024 - настоящее время</div>
+            <div className={`${common['container']}  ${classes['footer-content-container']}`}>
                 <div>
-                    <a href="https:/google.com/"  target='_blank'>
-                        <TelegramIcon />
-                    </a>
-                    <a href="https:/google.com/" target='_blank'>
-                        <GitHubIcon />
-                    </a>
+                    <div>Проект БИТОЧЕК</div>
+                    <div>2024 - настоящее время</div>
+                </div>
+                <div>
+                    <div className={classes['footer-links']}>
+                        <a href="https://t.me/somerift"  target='_blank' className={classes['footer-link']}>
+                            <span className={classes['footer-subheader']}>Связаться с автором</span>
+                            <TelegramIcon />
+                        </a>
+                        <a href="https://github.com/Gretten/bitochek" target='_blank' className={classes['footer-link']}>
+                            <span className={classes['footer-subheader']}>Посмотреть репозиторий</span>
+                            <GitHubIcon />
+                        </a>
+                    </div>
                 </div>
             </div>
         </footer>
