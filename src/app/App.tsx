@@ -1,5 +1,5 @@
 import AppRouter from "@/app/router/AppRouter"
-import { Loader } from "@/widgets/Loader/Loader";
+import { Loader } from "@/widgets/Loader/ui/Loader";
 import { Suspense } from "react";
 
 function App() {
