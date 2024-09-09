@@ -1,7 +1,9 @@
+import { UnderConstruction } from "@/widgets/UnderConstruction"
+
 export const NewsPage = () => {
     return (
         <section>
-            Hello News page!
+            <UnderConstruction />
         </section>
     )
 }
