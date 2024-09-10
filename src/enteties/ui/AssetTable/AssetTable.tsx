@@ -32,7 +32,11 @@ export const AssetTable = ({ header, type, data }) => {
       <div className={classes['table-container']}>
         <div className={classes['table-header']}>
           <h4>{header}</h4>
-          <Button color="secondary">ДОБАВИТЬ</Button>
+          <div>
+            <Button color="secondary">УДАЛИТЬ</Button>
+            <Button color="info">ДОБАВИТЬ</Button>
+          </div>
+
         </div>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
@@ -75,3 +79,4 @@ export const AssetTable = ({ header, type, data }) => {
       </div>
     )
 }
+
