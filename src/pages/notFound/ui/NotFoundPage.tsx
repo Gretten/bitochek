@@ -1,7 +1,9 @@
+import { UnderConstruction } from "@/widgets/UnderConstruction"
+
 export const NotFoundPage = () => {
     return (
         <section>
-            Hello Not Found page!
+           <UnderConstruction />
         </section>
     )
 }
