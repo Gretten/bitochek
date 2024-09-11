@@ -1,5 +1,5 @@
 export const initialState = {
-  tables: ['crypto'],
+  tables: [],
 };
 
 export const reducer = (state, action) => {
