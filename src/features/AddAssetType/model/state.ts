@@ -1,6 +1,5 @@
 export const initialState = {
-  tables: [],
-  data: null,
+  tables: ['crypto'],
 };
 
 export const reducer = (state, action) => {
@@ -12,7 +11,14 @@ export const reducer = (state, action) => {
         return {
           ...state,
           tables: [...state.tables, action.payload],
-          data: { ...state.data, [action.payload]: [] },
+        };
+      case 'REMOVE_TABLE':
+        if(!(state.tables.includes(action.payload))) {
+            return state;
+        };
+        return {
+          ...state,
+          tables: [...state.tables.filter((el => el === action.payload))]
         };
       default:
         return state;

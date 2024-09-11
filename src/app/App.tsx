@@ -9,7 +9,6 @@ function App() {
         <TableProvider>
              <AppRouter />
         </TableProvider>
-
     </Suspense>
   )
 }

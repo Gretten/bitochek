@@ -1,6 +1,19 @@
+import { useContext } from 'react';
 import classes from './classes.module.scss'
-import { AssetTable } from '@/enteties/ui/AssetTable/AssetTable';
-export const AssetsWidget = ({ header, assets }) => {
+import { AssetTable } from '@/shared/ui/';
+import { AssetsContext } from '@/features/AddAssetType';
+export const AssetsWidget = ({ header }) => {
+
+    const { state } = useContext(AssetsContext);
+    const { tables } = state;
+
+    enum names {
+        "crypto" = 'Криптовалюта',
+        "fiat" = "Фиатные Деньги",
+        "realEstate" = 'Недвидимость',
+        "belongings" = 'Имущество',
+    }
+
     return (
         <div>
             <div className={classes['header-container']}>
@@ -8,22 +21,19 @@ export const AssetsWidget = ({ header, assets }) => {
             </div>
 
             <div className={classes['assets-tables']}>
-                <AssetTable
-                    header={"Крипто"}
-                    data={[]}
-                    type="crypto"
-                />
-                <AssetTable
-                    header={"Имущество"}
-                    data={[]}
-                    type="assets"
-                />
 
-                <AssetTable
-                    header={"Фиатные деньги"}
-                    data={[]}
-                    type="fiat"
-                />
+                {
+                
+                tables.length > 0 ? tables.map((table) => {
+                        return (
+                            <AssetTable 
+                                type={table}
+                                header={names[table]}
+                                data={[]}
+                            />
+                        )
+                    }) : 'No content'
+                } 
             </div>
         </div>
     )

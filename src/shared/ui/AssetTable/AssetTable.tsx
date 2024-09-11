@@ -12,20 +12,19 @@ export const AssetTable = ({ header, type, data }) => {
 
     function createData(
         name: string,
-        calories: number,
-        fat: number,
-        carbs: number,
-        protein: number,
+        count: number,
+        price: number,
+        sum: number,
       ) {
-        return { name, calories, fat, carbs, protein };
+        return { name, count, price, sum };
       }
       
       const rows = [
-        createData('Bitcoin', 159, 6.0, 24, 4.0),
-        createData('Ethereum', 237, 9.0, 37, 4.3),
-        createData('Tether USD', 262, 16.0, 24, 6.0),
-        createData('Solana', 305, 3.7, 67, 4.3),
-        createData('Doge', 356, 16.0, 49, 3.9),
+        createData('Bitcoin', 0.875633, 57400, (0.0875633 * 57400)),
+        createData('Ethereum', 237, 9.0, 37),
+        createData('Tether USD', 262, 16.0, 24),
+        createData('Solana', 305, 3.7, 67),
+        createData('Doge', 356, 16.0, 49),
       ];
 
     return (
@@ -44,9 +43,8 @@ export const AssetTable = ({ header, type, data }) => {
               <TableRow>
                 <TableCell>Название</TableCell>
                 <TableCell align="right">Количество</TableCell>
-                <TableCell align="right">Цена (USD)</TableCell>
-                <TableCell align="right">Цена (RUB)</TableCell>
-                <TableCell align="right">График за 7 дней</TableCell>
+                <TableCell align="right">Цена</TableCell>
+                <TableCell align="right">Сумма</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -58,16 +56,15 @@ export const AssetTable = ({ header, type, data }) => {
                   <TableCell component="th" scope="row">
                     {row.name}
                   </TableCell>
-                  <TableCell align="right">{row.calories}</TableCell>
-                  <TableCell align="right">{row.fat}</TableCell>
-                  <TableCell align="right">{row.carbs}</TableCell>
-                  <TableCell align="right">{row.protein}</TableCell>
+                  <TableCell align="right">{row.count}</TableCell>
+                  <TableCell align="right">{row.price}</TableCell>
+                  <TableCell align="right">{row.sum}</TableCell>
                 </TableRow>
               ))}
                 <TableRow
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >                  
-                <TableCell component="th" scope="row" colSpan={3}>
+                <TableCell component="th" scope="row" colSpan={2}>
                    ИТОГО
                 </TableCell>
                 <TableCell rowSpan={3} />

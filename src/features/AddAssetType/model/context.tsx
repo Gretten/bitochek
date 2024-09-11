@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext } from 'react';
 import { initialState } from './state';
 import { useAssets } from './useAssets';
 

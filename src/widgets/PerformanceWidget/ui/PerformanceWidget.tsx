@@ -1,4 +1,4 @@
-import { SimpleLineChart } from "@/enteties/ui/SimpleLineChart/SimpleLineChart"
+import { SimpleLineChart } from "@/shared/ui/SimpleLineChart/SimpleLineChart"
 import classes from './classes.module.scss'
 
 export const PerformanceWidget = ({ header }) => {
