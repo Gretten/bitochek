@@ -1,1 +1,1 @@
-export { AssetTable } from './AssetTable/AssetTable';
+export { AssetTable } from '../../shared/ui/AssetTable/AssetTable';

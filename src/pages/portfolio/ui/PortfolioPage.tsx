@@ -6,6 +6,8 @@ import SelectVariants from "@/features/AddAssetType/ui/SelectVariants";
 import Button from "@mui/material/Button/Button";
 import { AssetsContext } from '@/features/AddAssetType'
 import { useContext } from "react";
+import { WidgetWrapper } from '@/shared/ui';
+import { Performance } from '@/enteties/Performance'
 
 export const PortfolioPage = () => {
     const { addTable } = useContext(AssetsContext);
@@ -43,31 +45,27 @@ export const PortfolioPage = () => {
     return (
             <div className={classes['portfolio']}>
                 <div className={classes["left-column"]}>
-                    <div className={classes["price-widget"]}>
-                        <PriceWidget 
-                            header="ЦЕНА" 
-                            prices={prices}
-                        />
+                    <div className={classes["widget"]}>
+                        <WidgetWrapper header="ЦЕНА">
+                            <PriceWidget prices={prices} />
+                        </WidgetWrapper>
                     </div>
-                    <div className={classes["performance-widget"]}>
-                        <PerformanceWidget 
-                            header="ПРОИЗВОДИТЕЛЬНОСТЬ"
-                        />
+                    <div className={classes["widget"]}>
+                        <WidgetWrapper header="ПРОИЗВОДИТЕЛЬНОСТЬ" >
+                            <Performance />
+                        </WidgetWrapper>
                     </div>
-                    <div className={classes['add-widget']}>
-                        <h3 className={classes['header']}>
-                            ДОБАВИТЬ АКТИВ
-                        </h3>
-                        <SelectVariants 
-                            setVariant={addTable}
-                        />
+                    <div className={classes['widget']}>
+                        <WidgetWrapper header="ДОБАВИТЬ АКТИВ" >
+                            <SelectVariants setVariant={addTable} />
+                        </WidgetWrapper>
                     </div>
                 </div>
                 <div className={classes["right-column"]}>
                     <div className={classes["assets-widget"]}>
                         <AssetsWidget 
                             header="АКТИВЫ"
-                            assets={assets}
+                            // assets={assets}
                         />
                     </div>
                 </div>

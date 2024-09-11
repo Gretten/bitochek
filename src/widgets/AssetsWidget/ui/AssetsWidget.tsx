@@ -1,8 +1,7 @@
 import classes from './classes.module.scss'
-import { AssetTable } from '@/enteties/ui/AssetTable/AssetTable';
+import { AssetTable } from '@/shared/ui/';
 export const AssetsWidget = ({ header }) => {
     return (
-        // todo Вынести обертку виджетов левой колонки с учетом пропа "максимальная ширина" (переиспользуемость)
         <div>
             <div className={classes['header-container']}>
                 <h3 className={classes['header']}>{header}</h3>
