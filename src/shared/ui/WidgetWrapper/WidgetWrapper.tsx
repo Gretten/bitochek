@@ -1,16 +1,16 @@
 import classes from './styles.module.scss'
 
 export interface Props {
-    maxWidth?: string;
     children: React.ReactElement;
     header: string;
+    styles?: Record<string, string>
 }
 
 export const WidgetWrapper = ({
-    header, maxWidth, children
+    header, children, styles
 }: Props): React.ReactElement => {
     return (
-        <div className={classes['container']} style={{ maxWidth }}>
+        <div className={classes['container']} style={styles}>
             <h3 className={classes['header']}>
                 {header}
             </h3>

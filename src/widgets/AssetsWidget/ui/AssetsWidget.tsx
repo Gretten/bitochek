@@ -11,7 +11,7 @@ export const AssetsWidget = ({ header, onAdd }) => {
 
     enum names {
         "crypto" = 'Криптовалюта',
-        "fiat" = "Фиатные Деньги",
+        "fiat" = "Деньги",
         "realty" = 'Недвижимость',
         "belongings" = 'Имущество',
     }
@@ -20,7 +20,7 @@ export const AssetsWidget = ({ header, onAdd }) => {
         <div>
             <div className={classes['header-container']}>
                 <h3 className={classes['header']}>{header}</h3>
-                <Button onClick={onAdd}>Добавить актив</Button>
+                <Button onClick={onAdd}>Новый актив</Button>
             </div>
 
             <div className={classes['assets-tables']}>
