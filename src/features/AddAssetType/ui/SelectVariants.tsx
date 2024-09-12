@@ -6,10 +6,11 @@ import { useState } from 'react';
 
 // Отрефакторить под принцип "программируй на интрфейсах, а не реализациях"
 interface Props {
+    label: string;
     setVariant: (newTable: string) => void
 }
 
-export default function SelectVariants({ setVariant }: Props) {
+export default function SelectVariants({ setVariant, label = "Тип" }: Props) {
 
   const [value, setValue] = useState<string>("");
     
@@ -20,11 +21,11 @@ export default function SelectVariants({ setVariant }: Props) {
 
   return (
     <div>
-      <FormControl variant="standard" sx={{ m: 1, minWidth: 200 }}>
-        <InputLabel id="demo-simple-select-standard-label">Тип актива</InputLabel>
+      <FormControl fullWidth sx={{ m: 1, minWidth: 200 }} style={{ margin: '0'}}>
+        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
-          labelId="demo-simple-select-standard-label"
-          id="demo-simple-select-standard"
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
           value={value}
           onChange={handleChange}
           label="Age"

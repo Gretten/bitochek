@@ -1,6 +1,7 @@
 import TextField from "@mui/material/TextField/TextField"
 import classes from './styles.module.scss'
 import Button from "@mui/material/Button/Button";
+import SelectVariants from "@/features/AddAssetType/ui/SelectVariants";
 
 export const AddAsset = ({ header = 'Добавить актив'}) => {
 
@@ -11,6 +12,10 @@ export const AddAsset = ({ header = 'Добавить актив'}) => {
                 <span>X</span>
             </div>
             <div className={classes['form-body']}>
+                <SelectVariants 
+                    setVariant={() => { console.log('hello!')}} 
+                    label="Тип" 
+                />
                 <TextField
                     required
                     id="outlined-required"
@@ -26,11 +31,6 @@ export const AddAsset = ({ header = 'Добавить актив'}) => {
                     id="outlined-required"
                     label="Цена"
                 />
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Сумма"
-               />
             </div>
             <div className={classes['form-footer']}>
                 <Button>Добавить!</Button>

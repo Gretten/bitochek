@@ -17,9 +17,15 @@ export const PortfolioPage = () => {
     return (
         <div className={classes['portfolio']}>
             <div className={classes["left-column"]}>
-                <div className={classes["widget"]}>
-                    <WidgetWrapper header="Добавить тип актива">
-                        <SelectVariants setVariant={addTable} />
+                <div className={`${classes["widget"]} ${classes["green"]}`}>
+                    <WidgetWrapper 
+                        header="Добавить тип актива"
+                        styles={{ backgroundColor: 'rgba(228, 255, 200, 0.967)'}}
+                    >
+                        <SelectVariants 
+                            setVariant={addTable} 
+                            label="Тип" 
+                        />
                     </WidgetWrapper>
                 </div>
                 <div className={classes["widget"]}>
