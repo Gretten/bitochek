@@ -15,6 +15,7 @@ export const AddAsset = ({ header = 'Добавить актив'}) => {
                 <SelectVariants 
                     setVariant={() => { console.log('hello!')}} 
                     label="Тип" 
+                    isRequired
                 />
                 <TextField
                     required

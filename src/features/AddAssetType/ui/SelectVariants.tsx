@@ -7,10 +7,11 @@ import { useState } from 'react';
 // Отрефакторить под принцип "программируй на интрфейсах, а не реализациях"
 interface Props {
     label: string;
-    setVariant: (newTable: string) => void
+    setVariant: (newTable: string) => void    
+    isRequired?: boolean;
 }
 
-export default function SelectVariants({ setVariant, label = "Тип" }: Props) {
+export default function SelectVariants({ setVariant, label = "Тип", isRequired = false }: Props) {
 
   const [value, setValue] = useState<string>("");
     
@@ -21,7 +22,7 @@ export default function SelectVariants({ setVariant, label = "Тип" }: Props) 
 
   return (
     <div>
-      <FormControl fullWidth sx={{ m: 1, minWidth: 200 }} style={{ margin: '0'}}>
+      <FormControl fullWidth sx={{ m: 1, minWidth: 200 }} style={{ margin: '0'}} required={isRequired}>
         <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
