@@ -1,7 +1,7 @@
 import TextField from "@mui/material/TextField/TextField"
 import classes from './styles.module.scss'
 import Button from "@mui/material/Button/Button";
-import SelectVariants from "@/features/AddAssetType/ui/SelectVariants";
+import {SelectVariants} from "@/shared/ui";
 import {useFormValidation} from "../model/useFormValidation";
 
 export const AddAsset = ({ header = 'Добавить актив'}) => {
@@ -24,21 +24,32 @@ export const AddAsset = ({ header = 'Добавить актив'}) => {
     };
 
     return (
-        <form className={classes['add-asset-form']} onSubmit={(e) => {
-            e.preventDefault();
-            handleSubmit(onSubmit);
+        <form 
+        className={classes['add-asset-form']} 
+            onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit(onSubmit);
           }}>
             <div className={classes['form-header']}>
                 <span>{header}</span>
                 <span>X</span>
             </div>
             <div className={classes['form-body']}>
-                {/* <SelectVariants 
+                <SelectVariants 
                     setVariant={handleChange} 
                     label="Тип" 
                     isRequired
-                    value={values.type}
-                /> */}
+                    items={[
+                        {
+                            name: 'Криптовалюта',
+                            value: 'crypto'
+                        },
+                        {
+                            name: 'Деньги',
+                            value: 'fiat'
+                        }
+                    ]}
+                />
                 <TextField
                     required
                     id="outlined-required"

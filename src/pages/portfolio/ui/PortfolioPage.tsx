@@ -1,7 +1,7 @@
 import { AssetsWidget } from "@/widgets/AssetsWidget";
 import { PriceWidget } from "@/widgets/PriceWidget";
 import classes from './classes.module.scss';
-import SelectVariants from "@/features/AddAssetType/ui/SelectVariants";
+import { SelectVariants } from "@/shared/ui";
 import { AssetsContext } from '@/features/AddAssetType'
 import { AddAsset } from "@/features/AddAsset/ui/AddAsset";
 import { useContext, useState } from "react";
@@ -25,6 +25,16 @@ export const PortfolioPage = () => {
                         <SelectVariants 
                             setVariant={addTable} 
                             label="Тип" 
+                            items={[
+                                {
+                                    name: 'Криптовалюта',
+                                    value: 'crypto'
+                                },
+                                {
+                                    name: 'Деньги',
+                                    value: 'fiat'
+                                }
+                            ]}
                         />
                     </WidgetWrapper>
                 </div>

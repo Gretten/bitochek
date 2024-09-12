@@ -8,10 +8,14 @@ import { useState } from 'react';
 interface Props {
     label: string;
     isRequired?: boolean;
+    items: {
+      value: string;
+      name: string;
+    }[];
     setVariant: (newTable: string) => void
 }
 
-export default function SelectVariants({ setVariant, label = "Тип", isRequired = false }: Props) {
+export const SelectVariants = ({ setVariant, label = "Тип", isRequired = false, items }: Props) => {
 
   const [value, setValue] = useState<string>("");
     
@@ -23,18 +27,22 @@ export default function SelectVariants({ setVariant, label = "Тип", isRequire
   return (
     <div>
       <FormControl fullWidth sx={{ m: 1, minWidth: 200 }} style={{ margin: '0'}} required={isRequired}>
-        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
+        <InputLabel id="label">{label}</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
+          label="Тип"
+          labelId="label"
+          id="select"
           value={value}
           onChange={handleChange}
-          label="Age"
         >
-          <MenuItem value={"crypto"}>Криптовалюта</MenuItem>
-          <MenuItem value={"fiat"}>Деньги</MenuItem>
-          <MenuItem value={"realty"}>Недвижимость</MenuItem>
-          <MenuItem value={"belongings"}>Имущество</MenuItem>
+          
+             {items?.length > 0 ? items.map(item => {
+              return (
+                <MenuItem value={item.value}>{item.name}</MenuItem>
+              )
+            })
+            : null}
+          
         </Select>
       </FormControl>
     </div>
