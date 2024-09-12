@@ -7,8 +7,8 @@ import { useState } from 'react';
 // Отрефакторить под принцип "программируй на интрфейсах, а не реализациях"
 interface Props {
     label: string;
-    setVariant: (newTable: string) => void    
     isRequired?: boolean;
+    setVariant: (newTable: string) => void
 }
 
 export default function SelectVariants({ setVariant, label = "Тип", isRequired = false }: Props) {
