@@ -33,7 +33,7 @@ export const AssetsWidget = ({ header, onAdd }) => {
                                 header={names[table]}
                             />
                         )
-                    }) : 'No content'
+                    }) : 'Добавьте первый тип актива!'
                 } 
             </div>
         </div>

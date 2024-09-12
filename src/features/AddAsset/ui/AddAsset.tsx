@@ -1,6 +1,4 @@
-import { ModalOverlay } from "@/shared/ui/ModalOverlay"
 import TextField from "@mui/material/TextField/TextField"
-import { useModal } from "../model/useModal";
 import classes from './styles.module.scss'
 import Button from "@mui/material/Button/Button";
 
@@ -16,27 +14,23 @@ export const AddAsset = ({ header = 'Добавить актив'}) => {
                 <TextField
                     required
                     id="outlined-required"
-                    label="Required"
-                    defaultValue="Тип актива"
+                    label="Название"
                 />
                 <TextField
                     required
                     id="outlined-required"
-                    label="Required"
-                    defaultValue="Название"
+                    label="Количество"
                 />
                 <TextField
                     required
                     id="outlined-required"
-                    label="Required"
-                    defaultValue="Количество"
+                    label="Цена"
                 />
                 <TextField
                     required
                     id="outlined-required"
-                    label="Required"
-                    defaultValue="Цена"
-                />
+                    label="Сумма"
+               />
             </div>
             <div className={classes['form-footer']}>
                 <Button>Добавить!</Button>

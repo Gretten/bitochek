@@ -18,18 +18,18 @@ export const PortfolioPage = () => {
         <div className={classes['portfolio']}>
             <div className={classes["left-column"]}>
                 <div className={classes["widget"]}>
-                    <WidgetWrapper header="Цена">
-                        <PriceWidget />
+                    <WidgetWrapper header="Добавить тип актива">
+                        <SelectVariants setVariant={addTable} />
                     </WidgetWrapper>
                 </div>
                 <div className={classes["widget"]}>
-                    <WidgetWrapper header="Производительность" >
-                        <Performance />
+                    <WidgetWrapper header="Цена портфеля" >
+                        <PriceWidget />
                     </WidgetWrapper>
                 </div>
                 <div className={classes['widget']}>
-                    <WidgetWrapper header="Добавить тип актива" >
-                        <SelectVariants setVariant={addTable} />
+                    <WidgetWrapper header="Производительность" >
+                        <Performance />
                     </WidgetWrapper>
                 </div>
             </div>
