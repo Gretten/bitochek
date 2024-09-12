@@ -1,14 +1,14 @@
+import { useContext } from "react";
+import classes from './classes.module.scss';
 import { AssetsWidget } from "@/widgets/AssetsWidget";
 import { PriceWidget } from "@/widgets/PriceWidget";
-import classes from './classes.module.scss';
-import { SelectVariants } from "@/shared/ui";
-import { AssetsContext } from '@/features/AddAssetType'
-import { AddAsset } from "@/features/AddAsset/ui/AddAsset";
-import { useContext, useState } from "react";
-import { WidgetWrapper } from '@/shared/ui';
+import { SelectVariants, ModalOverlay, WidgetWrapper } from "@/shared/ui";
 import { Performance } from '@/enteties/Performance'
 import { useAddAssetModal } from "@/features/AddAsset";
-import { ModalOverlay } from "@/shared/ui/ModalOverlay";
+import { AddAsset } from "@/features/AddAsset/ui/AddAsset";
+import { AssetsContext } from '@/features/AddAssetType'
+import { SelectChangeEvent } from "@mui/material";
+
 
 export const PortfolioPage = () => {
     const { addTable } = useContext(AssetsContext);
@@ -23,7 +23,7 @@ export const PortfolioPage = () => {
                         styles={{ backgroundColor: 'rgba(228, 255, 200, 0.967)'}}
                     >
                         <SelectVariants 
-                            setVariant={addTable} 
+                            onChange={(e) => addTable(e.target.value)} 
                             label="Тип" 
                             items={[
                                 {

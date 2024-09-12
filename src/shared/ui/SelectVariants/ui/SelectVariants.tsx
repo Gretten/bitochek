@@ -12,16 +12,16 @@ interface Props {
       value: string;
       name: string;
     }[];
-    setVariant: (newTable: string) => void
+    onChange: <T>(arg: T) => void;
 }
 
-export const SelectVariants = ({ setVariant, label = "Тип", isRequired = false, items }: Props) => {
+export const SelectVariants = ({ onChange, label = "Тип", isRequired = false, items }: Props) => {
 
   const [value, setValue] = useState<string>("");
     
   const handleChange = (event: SelectChangeEvent) => {
     setValue(event.target.value)
-    setVariant(event.target.value)
+    onChange(event)
   };
 
   return (
@@ -33,12 +33,16 @@ export const SelectVariants = ({ setVariant, label = "Тип", isRequired = fals
           labelId="label"
           id="select"
           value={value}
+          name='type'
           onChange={handleChange}
         >
           
              {items?.length > 0 ? items.map(item => {
               return (
-                <MenuItem value={item.value}>{item.name}</MenuItem>
+                <MenuItem 
+                  key={item.value}
+                  value={item.value}
+                >{item.name}</MenuItem>
               )
             })
             : null}

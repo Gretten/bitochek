@@ -36,7 +36,7 @@ export const AddAsset = ({ header = 'Добавить актив'}) => {
             </div>
             <div className={classes['form-body']}>
                 <SelectVariants 
-                    setVariant={handleChange} 
+                    onChange={handleChange} 
                     label="Тип" 
                     isRequired
                     items={[

@@ -30,6 +30,7 @@ export const AssetsWidget = ({ header, onAdd }) => {
                 tables.length > 0 ? tables.map((table) => {
                         return (
                             <AssetTable 
+                                key={table + (Math.random() * 5)}
                                 header={names[table]}
                             />
                         )
