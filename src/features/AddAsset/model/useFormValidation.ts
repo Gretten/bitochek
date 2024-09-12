@@ -7,14 +7,8 @@ export const useFormValidation = (initialValues) => {
   const [errorMessages, setErrorMessages] = useState({});
 
   const validateForm = () => {
-    const newErrors = {
-      count: false,
-      price: false,
-    };
-    const newErrorMessages = {
-      count: '',
-      price: '',
-    };
+    const newErrors = {};
+    const newErrorMessages = {};
 
     if (!isNumeric(values.count)) {
       newErrors.count = true;
