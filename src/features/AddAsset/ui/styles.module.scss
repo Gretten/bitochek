@@ -1,0 +1,31 @@
+.add-asset-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    position: relative;
+    padding: 20px;
+    min-width: 500px;
+}
+
+.form {
+    &-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        min-height: 300px;
+    }
+
+    &-header {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-footer {
+        margin-top: 10px;
+        display: flex;
+        justify-content: right;
+    }
+}
