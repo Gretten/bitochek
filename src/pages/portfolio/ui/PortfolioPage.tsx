@@ -7,12 +7,11 @@ import { Performance } from '@/enteties/Performance'
 import { useAddAssetModal } from "@/features/AddAsset";
 import { AddAsset } from "@/features/AddAsset/ui/AddAsset";
 import { AssetsContext } from '@/features/AddAssetType'
-import { SelectChangeEvent } from "@mui/material";
 
-
-export const PortfolioPage = () => {
-    const { addTable } = useContext(AssetsContext);
+export const PortfolioPage = () => {    
     const { isOpened, toggleModal } = useAddAssetModal();
+
+    const { state: tableState, addTable, addAsset } = useContext(AssetsContext);
 
     return (
         <div className={classes['portfolio']}>
@@ -52,6 +51,7 @@ export const PortfolioPage = () => {
             <div className={classes["right-column"]}>
                 <div className={classes["assets-widget"]}>
                     <AssetsWidget 
+                        tables={tableState.tables}
                         header="Активы"
                         onAdd={toggleModal}
                     />
@@ -62,7 +62,7 @@ export const PortfolioPage = () => {
                     isOpened={isOpened} 
                     toggleModal={toggleModal}
                 >
-                    <AddAsset />
+                    <AddAsset addAsset={addAsset}/>
                 </ModalOverlay>
             </div>
         </div>

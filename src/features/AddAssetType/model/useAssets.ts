@@ -8,6 +8,10 @@ export const useAssets = () => {
         dispatch({ type: 'ADD_TABLE', payload: newTable });
     };
 
-    return { state, addTable}
+    const addAsset = (asset) => {
+        dispatch({ type: 'ADD_ASSET', payload: asset });
+    }
+
+    return { state, addTable, addAsset }
   
 }

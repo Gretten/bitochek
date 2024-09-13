@@ -4,7 +4,7 @@ import Button from "@mui/material/Button/Button";
 import {SelectVariants} from "@/shared/ui";
 import {useFormValidation} from "../model/useFormValidation";
 
-export const AddAsset = ({ header = 'Добавить актив'}) => {
+export const AddAsset = ({ header = 'Добавить актив', addAsset }) => {
 
     const {
         values,
@@ -20,7 +20,7 @@ export const AddAsset = ({ header = 'Добавить актив'}) => {
     });
 
     const onSubmit = () => {
-        console.log('Форма валидна, отправляем данные:', values);
+        addAsset(values)
     };
 
     return (
@@ -74,7 +74,7 @@ export const AddAsset = ({ header = 'Добавить актив'}) => {
                 <TextField
                     required
                     id="outlined-required"
-                    label="Цена"
+                    label="Цена (USD)"
                     name="price"
                     helperText={errorMessages.price || null}
                     error={errors.price}

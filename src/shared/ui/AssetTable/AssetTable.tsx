@@ -26,7 +26,11 @@ import classes from './classes.module.scss'
 
 
 export const AssetTable = ({ header, data }: Params) => {
-  
+
+    const total = data.reduce((acc, el) => {
+      return acc = acc + el.price * el.count;
+    }, 0)
+    
     return (
       <div className={classes['table-container']}>
         <div className={classes['table-header']}>
@@ -38,13 +42,16 @@ export const AssetTable = ({ header, data }: Params) => {
               <TableRow>
                 <TableCell>Название</TableCell>
                 <TableCell align="right">Количество</TableCell>
-                <TableCell align="right">Цена</TableCell>
+                <TableCell align="right">Цена (USD)</TableCell>
                 <TableCell align="right">Сумма</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {data && data?.rows?.map((row) => (
-                <>
+              {data && data?.map((row) => {
+                
+                const sum = row.price * row.count;
+
+                return (
                   <TableRow
                     key={row.name}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -54,19 +61,18 @@ export const AssetTable = ({ header, data }: Params) => {
                     </TableCell>
                     <TableCell align="right">{row.count}</TableCell>
                     <TableCell align="right">{row.price}</TableCell>
-                    <TableCell align="right">{row.sum}</TableCell>
-                  </TableRow>
-                  <TableRow
+                    <TableCell align="right">{sum}</TableCell>
+                  </TableRow>           
+              )})}
+             <TableRow
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   >                  
-                  <TableCell component="th" scope="row" colSpan={2}>
-                    ИТОГО
-                  </TableCell>
-                  <TableCell rowSpan={3} />
-                  <TableCell align="right">{data?.total}</TableCell>
-                </TableRow>              
-              </>
-              )) }
+                    <TableCell component="th" scope="row" colSpan={2}>
+                      ИТОГО
+                    </TableCell>
+                    <TableCell rowSpan={3} />
+                    <TableCell align="right">{total}</TableCell>
+                </TableRow>   
             </TableBody>
           </Table>
         </TableContainer>

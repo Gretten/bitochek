@@ -1,13 +1,10 @@
-import { useContext } from 'react';
 import classes from './classes.module.scss'
-import { AssetTable } from '@/shared/ui/';
-import { AssetsContext } from '@/features/AddAssetType';
 import Button from '@mui/material/Button/Button';
+import { AssetTable } from '@/shared/ui/';
 
-export const AssetsWidget = ({ header, onAdd }) => {
+export const AssetsWidget = ({ header, onAdd, tables }) => {    
 
-    const { state } = useContext(AssetsContext);
-    const { tables } = state;
+    const content = Object.entries(tables);
 
     enum names {
         "crypto" = 'Криптовалюта',
@@ -27,11 +24,16 @@ export const AssetsWidget = ({ header, onAdd }) => {
 
                 {
                 
-                tables.length > 0 ? tables.map((table) => {
+                content.length > 0 ? content.map((table) => {
+
+                        const key = table[0] + (Math.random() * 5);
+                        const headerKey = names[table[0]];
+                        const rows = table[1];
                         return (
                             <AssetTable 
-                                key={table + (Math.random() * 5)}
-                                header={names[table]}
+                                key={key}
+                                header={headerKey}
+                                data={rows}
                             />
                         )
                     }) : 'Добавьте первый тип актива!'
