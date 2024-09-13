@@ -1,25 +1,40 @@
+import { useContext } from "react";
+import classes from './classes.module.scss';
 import { AssetsWidget } from "@/widgets/AssetsWidget";
 import { PriceWidget } from "@/widgets/PriceWidget";
-import classes from './classes.module.scss';
-import SelectVariants from "@/features/AddAssetType/ui/SelectVariants";
-import { AssetsContext } from '@/features/AddAssetType'
-import { AddAsset } from "@/features/AddAsset/ui/AddAsset";
-import { useContext, useState } from "react";
-import { WidgetWrapper } from '@/shared/ui';
+import { SelectVariants, ModalOverlay, WidgetWrapper } from "@/shared/ui";
 import { Performance } from '@/enteties/Performance'
 import { useAddAssetModal } from "@/features/AddAsset";
-import { ModalOverlay } from "@/shared/ui/ModalOverlay";
+import { AddAsset } from "@/features/AddAsset/ui/AddAsset";
+import { AssetsContext } from '@/features/AddAssetType'
 
-export const PortfolioPage = () => {
-    const { addTable } = useContext(AssetsContext);
+export const PortfolioPage = () => {    
     const { isOpened, toggleModal } = useAddAssetModal();
+
+    const { state: tableState, addTable, addAsset } = useContext(AssetsContext);
 
     return (
         <div className={classes['portfolio']}>
             <div className={classes["left-column"]}>
-                <div className={classes["widget"]}>
-                    <WidgetWrapper header="Добавить тип актива">
-                        <SelectVariants setVariant={addTable} />
+                <div className={`${classes["widget"]} ${classes["green"]}`}>
+                    <WidgetWrapper 
+                        header="Добавить тип актива"
+                        styles={{ backgroundColor: 'rgba(228, 255, 200, 0.967)'}}
+                    >
+                        <SelectVariants 
+                            onChange={(e) => addTable(e.target.value)} 
+                            label="Тип" 
+                            items={[
+                                {
+                                    name: 'Криптовалюта',
+                                    value: 'crypto'
+                                },
+                                {
+                                    name: 'Деньги',
+                                    value: 'fiat'
+                                }
+                            ]}
+                        />
                     </WidgetWrapper>
                 </div>
                 <div className={classes["widget"]}>
@@ -36,6 +51,7 @@ export const PortfolioPage = () => {
             <div className={classes["right-column"]}>
                 <div className={classes["assets-widget"]}>
                     <AssetsWidget 
+                        tables={tableState.tables}
                         header="Активы"
                         onAdd={toggleModal}
                     />
@@ -46,7 +62,7 @@ export const PortfolioPage = () => {
                     isOpened={isOpened} 
                     toggleModal={toggleModal}
                 >
-                    <AddAsset />
+                    <AddAsset addAsset={addAsset}/>
                 </ModalOverlay>
             </div>
         </div>
