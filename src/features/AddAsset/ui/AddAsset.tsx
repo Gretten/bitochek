@@ -3,8 +3,9 @@ import classes from './styles.module.scss'
 import Button from "@mui/material/Button/Button";
 import {SelectVariants} from "@/shared/ui";
 import {useFormValidation} from "../model/useFormValidation";
+import CloseIcon from '@mui/icons-material/Close';
 
-export const AddAsset = ({ header = 'Добавить актив', addAsset }) => {
+export const AddAsset = ({ header = 'Добавить актив', addAsset, onClose }) => {
 
     const {
         values,
@@ -21,7 +22,8 @@ export const AddAsset = ({ header = 'Добавить актив', addAsset }) =
 
     const onSubmit = (e) => {
         e.preventDefault();
-        handleSubmit(addAsset(values));
+        handleSubmit(() => addAsset(values));
+        onClose();
     };
 
     return (
@@ -30,7 +32,12 @@ export const AddAsset = ({ header = 'Добавить актив', addAsset }) =
             onSubmit={onSubmit}>
             <div className={classes['form-header']}>
                 <span>{header}</span>
-                <span>X</span>
+                <span 
+                    className={classes['form-on-close']} 
+                    onClick={onClose}
+                >
+                    <CloseIcon />
+                </span>
             </div>
             <div className={classes['form-body']}>
                 <SelectVariants 
