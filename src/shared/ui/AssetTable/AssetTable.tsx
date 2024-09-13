@@ -27,10 +27,8 @@ import classes from './classes.module.scss'
 
 export const AssetTable = ({ header, data }: Params) => {
 
-    const total = data.reduce((acc, el) => {
-      return acc = acc + el.price * el.count;
-    }, 0)
-    
+  console.log(data)
+
     return (
       <div className={classes['table-container']}>
         <div className={classes['table-header']}>
@@ -48,19 +46,19 @@ export const AssetTable = ({ header, data }: Params) => {
             </TableHead>
             <TableBody>
               {data && data?.map((row) => {
-                
-                const sum = row.price * row.count;
 
+                const { count, price, sum, name } = row;
+                
                 return (
                   <TableRow
-                    key={row.name}
+                    key={name}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   >
                     <TableCell component="th" scope="row">
-                      {row.name}
+                      {name}
                     </TableCell>
-                    <TableCell align="right">{row.count}</TableCell>
-                    <TableCell align="right">{row.price}</TableCell>
+                    <TableCell align="right">{count}</TableCell>
+                    <TableCell align="right">{price}</TableCell>
                     <TableCell align="right">{sum}</TableCell>
                   </TableRow>           
               )})}
@@ -71,7 +69,7 @@ export const AssetTable = ({ header, data }: Params) => {
                       ИТОГО
                     </TableCell>
                     <TableCell rowSpan={3} />
-                    <TableCell align="right">{total}</TableCell>
+                    <TableCell align="right">{data?.total}</TableCell>
                 </TableRow>   
             </TableBody>
           </Table>
