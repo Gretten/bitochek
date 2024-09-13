@@ -1,5 +1,3 @@
-import { addSumFieldsToState, getTotal } from '../lib'
-
 export const initialState = {
   tables: {},
   total: 0,
@@ -39,7 +37,7 @@ export const reducer = (state, action) => {
         const newAssetsState = [...currentTableState, rest];
 
         /*
-        
+
           1. Add sum to all rows
           2. Get total using that sum fields
           3. Add total to table data
