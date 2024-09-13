@@ -19,17 +19,15 @@ export const AddAsset = ({ header = 'Добавить актив', addAsset }) =
         price: '',
     });
 
-    const onSubmit = () => {
-        addAsset(values)
+    const onSubmit = (e) => {
+        e.preventDefault();
+        handleSubmit(addAsset(values));
     };
 
     return (
         <form 
         className={classes['add-asset-form']} 
-            onSubmit={(e) => {
-                e.preventDefault();
-                handleSubmit(onSubmit);
-          }}>
+            onSubmit={onSubmit}>
             <div className={classes['form-header']}>
                 <span>{header}</span>
                 <span>X</span>
