@@ -62,7 +62,7 @@ export const PortfolioPage = () => {
                     isOpened={isOpened} 
                     toggleModal={toggleModal}
                 >
-                    <AddAsset addAsset={addAsset}/>
+                    <AddAsset addAsset={addAsset} onClose={toggleModal}/>
                 </ModalOverlay>
             </div>
         </div>

@@ -6,7 +6,7 @@
     isOpened,
     toggleModal,
     children
-  }) => {
+  }: ModalOverlayProps) => {
         
     if(!isOpened) return null;
     return (

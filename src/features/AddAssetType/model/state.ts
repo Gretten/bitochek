@@ -1,18 +1,6 @@
 export const initialState = {
-  tables: {
-    crypto: [
-          {
-              name: 'Bitcoin',
-              count: 1,
-              price: 57000,
-          },
-          {
-              name: 'Ethereum',
-              count: 4,
-              price: 4766,
-          }
-        ]
-      },
+  tables: {},
+  total: 0,
 };
 
 export const reducer = (state, action) => {
@@ -43,18 +31,37 @@ export const reducer = (state, action) => {
             return state;
         }
 
+        const total = getTotal(currentTableState);
+
         const {type: __, ...rest} = action.payload;
         const newAssetsState = [...currentTableState, rest];
 
+        /*
+
+          1. Add sum to all rows
+          2. Get total using that sum fields
+          3. Add total to table data
+          4. Calculate all totals.
+          5. Pass the result to the Price widget.
+          6. Add calculations inside the Price widget.
+          7. Fix NaN bug.
+          Viola!
+
+        */
         const newTablesState = {
           ...state,
           tables: {
             ...tables,
             [type]: newAssetsState,
           }
-        }
+        };
         
         return newTablesState;
+      
+      case 'SET_TOTAL':
+        const totalSum = '';
+        return getTotal(state);
+
       case 'REMOVE_TABLE':
         if(!state.tables[action.payload]) {
             return state;
