@@ -1,20 +1,17 @@
 import classes from './classes.module.scss';
+import { currencies, getListData, volatiles } from '../model'
 
 export const PriceWidget = ({ totalPrice }: { totalPrice: number}) => {
 
-    const uzs = totalPrice * 11245;
-    const rub = totalPrice * 97;
-    const usd = totalPrice;
-
-    const x = [uzs, usd, rub];
+    const list = getListData(currencies, volatiles, totalPrice);
 
     return (
         <div className={classes['content']}>
-            {x.map((el) => (
-                <div key={[el += Math.random() * 5]}>
-                    <span>{[el]}</span>
+            {list.map((el) => (
+                <div key={el.name} className={classes['prices']}>
+                    <span className={classes['name']}>{el.name}</span>
                     <span>:</span>
-                    <span>{el}</span>
+                    <span className={classes['value']}>{el.value}</span>
                 </div>
             ))}
     </div>
