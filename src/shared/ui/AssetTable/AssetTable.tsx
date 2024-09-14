@@ -27,8 +27,6 @@ import classes from './classes.module.scss'
 
 export const AssetTable = ({ header, data }: Params) => {
 
-  console.log(data)
-
     return (
       <div className={classes['table-container']}>
         <div className={classes['table-header']}>
@@ -45,7 +43,7 @@ export const AssetTable = ({ header, data }: Params) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data && data?.map((row) => {
+              {data && data?.rows.map((row) => {
 
                 const { count, price, sum, name } = row;
                 
