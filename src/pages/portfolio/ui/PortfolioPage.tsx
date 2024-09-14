@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import classes from './classes.module.scss';
 import { AssetsWidget } from "@/widgets/AssetsWidget";
 import { PriceWidget } from "@/widgets/PriceWidget";
@@ -12,6 +12,19 @@ export const PortfolioPage = () => {
     const { isOpened, toggleModal } = useAddAssetModal();
 
     const { state: tableState, addTable, addAsset } = useContext(AssetsContext);
+
+    const calculateTotal = (tables) => {
+        let sum = 0;
+        if(Object.keys(tableState.tables).length) {
+            Object.values(tableState.tables).forEach(el => {
+                sum += el.total;
+            })
+        }
+
+        return sum;
+    }
+
+    const totalPrice = calculateTotal(tableState)
 
     return (
         <div className={classes['portfolio']}>
@@ -39,7 +52,7 @@ export const PortfolioPage = () => {
                 </div>
                 <div className={classes["widget"]}>
                     <WidgetWrapper header="Цена портфеля" >
-                        <PriceWidget />
+                        <PriceWidget totalPrice={totalPrice} />
                     </WidgetWrapper>
                 </div>
                 <div className={classes['widget']}>

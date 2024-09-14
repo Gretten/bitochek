@@ -1,29 +1,20 @@
 import classes from './classes.module.scss';
 
-export const PriceWidget = ({ prices }: { prices?: []}) => {
+export const PriceWidget = ({ totalPrice }: { totalPrice: number}) => {
 
-    const mock = [
-        {
-            currency: 'RUB',
-            value: 123,
-        },
-        {
-            currency: 'USD',
-            value: 456,
-        },
-        {
-            currency: 'UZS',
-            value: 789,
-        },
-    ];
+    const uzs = totalPrice * 11245;
+    const rub = totalPrice * 97;
+    const usd = totalPrice;
+
+    const x = [uzs, usd, rub];
 
     return (
         <div className={classes['content']}>
-            {(prices || mock).map(({ currency, value }) => (
-                <div key={currency}>
-                    <span>{currency}</span>
+            {x.map((el) => (
+                <div key={[el += Math.random() * 5]}>
+                    <span>{[el]}</span>
                     <span>:</span>
-                    <span>{value}</span>
+                    <span>{el}</span>
                 </div>
             ))}
     </div>

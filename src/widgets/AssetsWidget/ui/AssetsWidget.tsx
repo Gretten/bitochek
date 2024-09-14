@@ -2,7 +2,7 @@ import classes from './classes.module.scss'
 import Button from '@mui/material/Button/Button';
 import { AssetTable } from '@/shared/ui/';
 
-export const AssetsWidget = ({ header, onAdd, tables }) => {    
+export const AssetsWidget = ({ header, onAdd, tables }) => {   
 
     const content = Object.entries(tables);
 
