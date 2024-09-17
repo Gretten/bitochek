@@ -53,9 +53,7 @@ export const AssetTable = ({ header, rows, total, columns = defaultConfig }: Ass
              <TableRow
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   >                  
-                    <TableCell component="th" scope="row">
-                      ИТОГО
-                    </TableCell>
+                    <TableCell component="th" scope="row"></TableCell>
                     <TableCell colSpan={summaryLength} align="right">{total}</TableCell>
                 </TableRow>   
             </TableBody>

@@ -11,20 +11,7 @@ import { AssetsContext } from '@/features/AddAssetType'
 export const PortfolioPage = () => {    
     const { isOpened, toggleModal } = useAddAssetModal();
 
-    const { state: tableState, addTable, addAsset } = useContext(AssetsContext);
-
-    const calculateTotal = (tables) => {
-        let sum = 0;
-        if(Object.keys(tableState.tables).length) {
-            Object.values(tableState.tables).forEach(el => {
-                sum += el.total;
-            })
-        }
-
-        return sum;
-    }
-
-    const totalPrice = calculateTotal(tableState)
+    const { tables, total, addTable, addAsset } = useContext(AssetsContext);
 
     return (
         <div className={classes['portfolio']}>
@@ -52,7 +39,7 @@ export const PortfolioPage = () => {
                 </div>
                 <div className={classes["widget"]}>
                     <WidgetWrapper header="Цена портфеля" >
-                        <Price totalPrice={totalPrice} />
+                        <Price totalPrice={total} />
                     </WidgetWrapper>
                 </div>
                 <div className={classes['widget']}>
@@ -64,7 +51,8 @@ export const PortfolioPage = () => {
             <div className={classes["right-column"]}>
                 <div className={classes["assets-widget"]}>
                     <AssetsWidget 
-                        tables={tableState.tables}
+                        tables={tables}
+                        totalPrice={total}
                         header="Активы"
                         onAdd={toggleModal}
                     />

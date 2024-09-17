@@ -14,10 +14,12 @@ interface Tables {
 
 interface State {
   tables: Tables | {};
+  total: number;
 }
 
 export const initialState: State = {
   tables: {},
+  total: 0,
 };
 
 export const reducer = (state, action) => {
@@ -58,6 +60,7 @@ export const reducer = (state, action) => {
         
         const newTablesState = {
           ...state,
+          total: state.total + total,
           tables: {
             ...tables,
             [type]: {

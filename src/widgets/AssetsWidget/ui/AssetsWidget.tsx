@@ -3,7 +3,7 @@ import Button from '@mui/material/Button/Button';
 import { AssetTable } from '@/shared/ui/';
 import { names } from '../config';
 
-export const AssetsWidget = ({ header, onAdd, tables }) => {   
+export const AssetsWidget = ({ header, onAdd, tables, totalPrice }) => {   
 
     const content = Object.entries(tables);
 
@@ -34,6 +34,14 @@ export const AssetsWidget = ({ header, onAdd, tables }) => {
                         )
                     }) : 'Добавьте первый тип актива!'
                 } 
+
+                {
+                content.length > 0 && (
+                        <div>
+                            ИТОГО: {totalPrice}
+                        </div>
+                    )
+                }
             </div>
         </div>
     )
