@@ -39,7 +39,9 @@ export const PortfolioPage = () => {
                 </div>
                 <div className={classes["widget"]}>
                     <WidgetWrapper header="Цена портфеля" >
-                        <Price totalPrice={total} />
+                        <Price 
+                            totalPrice={total} 
+                        />
                     </WidgetWrapper>
                 </div>
                 <div className={classes['widget']}>
@@ -63,7 +65,10 @@ export const PortfolioPage = () => {
                     isOpened={isOpened} 
                     toggleModal={toggleModal}
                 >
-                    <AddAsset addAsset={addAsset} onClose={toggleModal}/>
+                    <AddAsset 
+                        addAsset={addAsset} 
+                        onClose={toggleModal}
+                    />
                 </ModalOverlay>
             </div>
         </div>
