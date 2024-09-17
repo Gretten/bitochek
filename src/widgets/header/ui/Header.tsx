@@ -10,7 +10,7 @@ import { useTabs } from '@/widgets/Header/model/useTabs';
 export const Header = () => {
 
     const { activeTab, setActiveTab } = useTabs({
-        initialState: '/portfolio'
+        initialState: '/'
     });
     return (
         <header className={classes['header']}>
