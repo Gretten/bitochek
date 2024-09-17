@@ -1,9 +1,9 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import classes from './classes.module.scss';
 import { AssetsWidget } from "@/widgets/AssetsWidget";
-import { PriceWidget } from "@/widgets/PriceWidget";
 import { SelectVariants, ModalOverlay, WidgetWrapper } from "@/shared/ui";
 import { Performance } from '@/enteties/Performance'
+import { Price } from "@/enteties/Price";
 import { useAddAssetModal } from "@/features/AddAsset";
 import { AddAsset } from "@/features/AddAsset/ui/AddAsset";
 import { AssetsContext } from '@/features/AddAssetType'
@@ -52,7 +52,7 @@ export const PortfolioPage = () => {
                 </div>
                 <div className={classes["widget"]}>
                     <WidgetWrapper header="Цена портфеля" >
-                        <PriceWidget totalPrice={totalPrice} />
+                        <Price totalPrice={totalPrice} />
                     </WidgetWrapper>
                 </div>
                 <div className={classes['widget']}>

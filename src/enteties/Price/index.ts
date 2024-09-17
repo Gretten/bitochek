@@ -1,0 +1,1 @@
+export { PriceWidget as Price } from './ui/PriceWidget';
