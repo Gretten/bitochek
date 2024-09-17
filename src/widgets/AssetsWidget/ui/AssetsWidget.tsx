@@ -1,19 +1,11 @@
 import classes from './classes.module.scss'
 import Button from '@mui/material/Button/Button';
 import { AssetTable } from '@/shared/ui/';
+import { names } from '../config';
 
 export const AssetsWidget = ({ header, onAdd, tables }) => {   
 
     const content = Object.entries(tables);
-
-    enum names {
-        "crypto" = 'Криптовалюта',
-        "fiat" = "Деньги",
-        "realty" = 'Недвижимость',
-        "belongings" = 'Имущество',
-    }
-
-    console.log(content)
 
     return (
         <div>
