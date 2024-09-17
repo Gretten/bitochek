@@ -16,7 +16,11 @@ const routerConfig = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: Routes.Portfolio,
+        index: true,
+        element: <Portfolio />
+      },
+      {
+        index: true,
         element: <Portfolio />
       },
       {
