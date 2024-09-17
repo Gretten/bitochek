@@ -5,7 +5,7 @@ import { names } from '../config';
 
 export const AssetsWidget = ({ header, onAdd, tables, totalPrice }) => {   
 
-    const content = Object.entries(tables);
+    const data = Object.entries(tables);
 
     return (
         <div>
@@ -18,12 +18,11 @@ export const AssetsWidget = ({ header, onAdd, tables, totalPrice }) => {
 
                 {
                 
-                content.length > 0 ? content.map((table) => {
+                data.length > 0 ? data.map((table) => {
 
                         const key = table[0] + (Math.random() * 5);
                         const headerKey = names[table[0]];
                         const data = table[1];
-                        console.log(table[1])
                         return (
                             <AssetTable 
                                 key={key}
@@ -36,9 +35,9 @@ export const AssetsWidget = ({ header, onAdd, tables, totalPrice }) => {
                 } 
 
                 {
-                content.length > 0 && (
-                        <div>
-                            ИТОГО: {totalPrice}
+                data.length > 0 && (
+                        <div className={classes['total']}>
+                            ИТОГО: ${totalPrice}
                         </div>
                     )
                 }
