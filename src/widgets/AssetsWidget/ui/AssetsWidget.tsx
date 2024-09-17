@@ -13,6 +13,8 @@ export const AssetsWidget = ({ header, onAdd, tables }) => {
         "belongings" = 'Имущество',
     }
 
+    console.log(content)
+
     return (
         <div>
             <div className={classes['header-container']}>
@@ -28,12 +30,14 @@ export const AssetsWidget = ({ header, onAdd, tables }) => {
 
                         const key = table[0] + (Math.random() * 5);
                         const headerKey = names[table[0]];
-                        const rows = table[1];
+                        const data = table[1];
+                        console.log(table[1])
                         return (
                             <AssetTable 
                                 key={key}
                                 header={headerKey}
-                                data={rows}
+                                rows={data.rows}
+                                total={data.total}
                             />
                         )
                     }) : 'Добавьте первый тип актива!'
