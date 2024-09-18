@@ -1,7 +1,8 @@
 import { names } from "@/widgets/AssetsWidget/config";
-import { TableRow } from '@/shared/ui/AssetTable/types';
+import { Tables } from "@/features/AddAssetType/types";
+import { Table } from "@/widgets/AssetsWidget/ui/AssetsWidget";
 
-export const tablesAdapter = (tables): TableRow[] | null  => {
+export const tablesAdapter = (tables: {} | Tables): Table[] | null  => {
     const data = Object.entries(tables);
     
     if(!tables || !data.length) return null;
@@ -14,7 +15,6 @@ export const tablesAdapter = (tables): TableRow[] | null  => {
             name,
             rows,
             total,
-            
         }
     })
 }

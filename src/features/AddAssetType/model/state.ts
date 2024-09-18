@@ -1,28 +1,12 @@
 import { addAssetsSum, getTotal } from '../lib';
-
-interface Row {
-  name: string,
-  count: number,
-  price: number,
-  sum: number,
-}
-
-interface Tables {
-  rows: Row[];
-  total: number;
-}
-
-interface State {
-  tables: Tables | {};
-  total: number;
-}
+import { State } from '../types';
 
 export const initialState: State = {
   tables: {},
   total: 0,
 };
 
-export const reducer = (state, action) => {
+export const reducer = (state: State, action) => {
     switch (action.type) {
       case 'ADD_TABLE':
         if(state.tables[action.payload]) {
@@ -71,18 +55,14 @@ export const reducer = (state, action) => {
         };
                 
         return newTablesState;
-      
-      case 'SET_TOTAL':
-        const totalSum = '';
-        return state;
 
-      case 'REMOVE_TABLE':
-        if(!state.tables[action.payload]) {
-            return state;
-        };
+      // case 'REMOVE_TABLE':
+      //   if(!state.tables[action.payload]) {
+      //       return state;
+      //   };
 
-        const { [action.payload]: _, ...newState } = state;
-        return newState;
+      //   const { [action.payload]: _, ...newState } = state;
+      //   return newState;
         
       default:
         return state;

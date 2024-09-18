@@ -13,6 +13,7 @@ export const PortfolioPage = () => {
     const { isOpened, toggleModal } = useAddAssetModal();
 
     const { tables, total, addTable, addAsset } = useContext(AssetsContext);
+    const tablesData = tablesAdapter(tables)
 
     return (
         <div className={classes['portfolio']}>
@@ -54,7 +55,7 @@ export const PortfolioPage = () => {
             <div className={classes["right-column"]}>
                 <div className={classes["assets-widget"]}>
                     <AssetsWidget 
-                        tables={tablesAdapter(tables)}
+                        tables={tablesData}
                         totalPrice={total}
                         header="Активы"
                         onAddSingleAsset={toggleModal}

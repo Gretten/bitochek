@@ -1,10 +1,9 @@
 import classes from './classes.module.scss'
 import Button from '@mui/material/Button/Button';
 import { AssetTable } from '@/shared/ui/';
-import { names } from '../config';
 import { TableRow } from '@/shared/ui/AssetTable/types';
 
-interface Table {
+export interface Table {
     header: string;
     rows: TableRow[];
     total: number;
