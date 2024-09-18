@@ -6,28 +6,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import classes from './classes.module.scss'
+import { AssetTableProps } from './types';
+import { defaultConfig } from './config';
 
-  interface Row {
-    name: string,
-    count: number,
-    price: number,
-    sum: number,
-  }
+export const AssetTable = ({ header, rows, total, columns = defaultConfig }: AssetTableProps) => {
 
-  interface Data {
-    rows: Row[];
-    total: number;
-  }
-
-  interface Params {
-    data?: Data;
-    header: string;
-  }
-
-
-export const AssetTable = ({ header, data }: Params) => {
-
-  console.log(data)
+  const summaryLength = columns.length - 1;
 
     return (
       <div className={classes['table-container']}>
@@ -38,15 +22,19 @@ export const AssetTable = ({ header, data }: Params) => {
           <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
             <TableHead>
               <TableRow>
-                <TableCell>Название</TableCell>
-                <TableCell align="right">Количество</TableCell>
-                <TableCell align="right">Цена (USD)</TableCell>
-                <TableCell align="right">Сумма</TableCell>
+                {
+                  columns.map((column) => {
+                    const { name, align } = column;
+
+                    return (
+                      <TableCell align={align || "inherit"}>{name}</TableCell>
+                    )
+                  })
+                }
               </TableRow>
             </TableHead>
             <TableBody>
-              {data && data?.map((row) => {
-
+              {rows?.map((row) => {
                 const { count, price, sum, name } = row;
                 
                 return (
@@ -65,11 +53,8 @@ export const AssetTable = ({ header, data }: Params) => {
              <TableRow
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   >                  
-                    <TableCell component="th" scope="row" colSpan={2}>
-                      ИТОГО
-                    </TableCell>
-                    <TableCell rowSpan={3} />
-                    <TableCell align="right">{data?.total}</TableCell>
+                    <TableCell component="th" scope="row"></TableCell>
+                    <TableCell colSpan={summaryLength} align="right">{total}</TableCell>
                 </TableRow>   
             </TableBody>
           </Table>

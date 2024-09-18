@@ -10,7 +10,7 @@ import { useTabs } from '@/widgets/Header/model/useTabs';
 export const Header = () => {
 
     const { activeTab, setActiveTab } = useTabs({
-        initialState: '/portfolio'
+        initialState: '/'
     });
     return (
         <header className={classes['header']}>
@@ -20,7 +20,7 @@ export const Header = () => {
                 </div>
                 <nav className={classes['header-navbar']}>
                     <Tabs value={activeTab} onChange={(_, value) => setActiveTab(value) }>
-                        <Tab label="Портфолио" value={Routes.Portfolio} to={Routes.Portfolio} component={Link} />
+                        <Tab label="Портфолио" value={Routes.Main} to={Routes.Main} component={Link} />
                         <Tab label="Валюта" value={Routes.Asset} to={Routes.Asset} component={Link} />
                         <Tab label="Новости" value={Routes.News} to={Routes.News} component={Link} />
                     </Tabs>

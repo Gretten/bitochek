@@ -3,25 +3,17 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useState } from 'react';
+import { SelectVariantsProps } from '../types';
 
-// Отрефакторить под принцип "программируй на интрфейсах, а не реализациях"
-interface Props {
-    label: string;
-    isRequired?: boolean;
-    items: {
-      value: string;
-      name: string;
-    }[];
-    onChange: <T>(arg: T) => void;
-}
-
-export const SelectVariants = ({ onChange, label = "Тип", isRequired = false, items }: Props) => {
+export const SelectVariants = ({ onChange, label = "Тип", isRequired = false, items }: SelectVariantsProps) => {
 
   const [value, setValue] = useState<string>("");
     
   const handleChange = (event: SelectChangeEvent) => {
-    setValue(event.target.value)
-    onChange(event)
+    if(event && event.target) {
+        setValue(event.target.value)
+        onChange(event)
+    }
   };
 
   return (

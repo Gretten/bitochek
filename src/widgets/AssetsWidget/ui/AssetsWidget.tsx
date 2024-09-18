@@ -1,17 +1,11 @@
 import classes from './classes.module.scss'
 import Button from '@mui/material/Button/Button';
 import { AssetTable } from '@/shared/ui/';
+import { names } from '../config';
 
-export const AssetsWidget = ({ header, onAdd, tables }) => {    
+export const AssetsWidget = ({ header, onAdd, tables, totalPrice }) => {   
 
-    const content = Object.entries(tables);
-
-    enum names {
-        "crypto" = 'Криптовалюта',
-        "fiat" = "Деньги",
-        "realty" = 'Недвижимость',
-        "belongings" = 'Имущество',
-    }
+    const data = Object.entries(tables);
 
     return (
         <div>
@@ -24,20 +18,29 @@ export const AssetsWidget = ({ header, onAdd, tables }) => {
 
                 {
                 
-                content.length > 0 ? content.map((table) => {
+                data.length > 0 ? data.map((table) => {
 
                         const key = table[0] + (Math.random() * 5);
                         const headerKey = names[table[0]];
-                        const rows = table[1];
+                        const data = table[1];
                         return (
                             <AssetTable 
                                 key={key}
                                 header={headerKey}
-                                data={rows}
+                                rows={data.rows}
+                                total={data.total}
                             />
                         )
                     }) : 'Добавьте первый тип актива!'
                 } 
+
+                {
+                data.length > 0 && (
+                        <div className={classes['total']}>
+                            ИТОГО: ${totalPrice}
+                        </div>
+                    )
+                }
             </div>
         </div>
     )

@@ -1,4 +1,23 @@
-export const initialState = {
+import { addAssetsSum, getTotal } from '../lib';
+
+interface Row {
+  name: string,
+  count: number,
+  price: number,
+  sum: number,
+}
+
+interface Tables {
+  rows: Row[];
+  total: number;
+}
+
+interface State {
+  tables: Tables | {};
+  total: number;
+}
+
+export const initialState: State = {
   tables: {},
   total: 0,
 };
@@ -14,7 +33,10 @@ export const reducer = (state, action) => {
           ...state,
           tables: {
             ...state.tables,
-            [action.payload]: [],
+            [action.payload]: {
+              rows: [],
+              total: 0,
+            },
           },
         };
       case 'ADD_ASSET':
@@ -25,42 +47,34 @@ export const reducer = (state, action) => {
           return state;
         };
 
-        const currentTableState = tables[type];
+        const currentTable = tables[type].rows;
 
-        if(currentTableState.some((row) => row.name === name)) {
+        if(currentTable.some((row) => row.name === name)) {
             return state;
         }
 
-        const total = getTotal(currentTableState);
-
-        const {type: __, ...rest} = action.payload;
-        const newAssetsState = [...currentTableState, rest];
-
-        /*
-
-          1. Add sum to all rows
-          2. Get total using that sum fields
-          3. Add total to table data
-          4. Calculate all totals.
-          5. Pass the result to the Price widget.
-          6. Add calculations inside the Price widget.
-          7. Fix NaN bug.
-          Viola!
-
-        */
+        const {type: __, ...newTable} = action.payload;
+        const newAssetsState = [...currentTable, newTable];
+        const withSumFuelds = addAssetsSum(newAssetsState);
+        const total = getTotal(withSumFuelds);
+        
         const newTablesState = {
           ...state,
+          total: state.total + total,
           tables: {
             ...tables,
-            [type]: newAssetsState,
+            [type]: {
+              rows: withSumFuelds,
+              total,
+            },
           }
         };
-        
+                
         return newTablesState;
       
       case 'SET_TOTAL':
         const totalSum = '';
-        return getTotal(state);
+        return state;
 
       case 'REMOVE_TABLE':
         if(!state.tables[action.payload]) {
