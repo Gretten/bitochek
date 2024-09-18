@@ -3,7 +3,7 @@ import { Tables } from "@/features/AddAssetType/types";
 import { Table } from "@/widgets/AssetsWidget/ui/AssetsWidget";
 
 export const tablesAdapter = (tables: {} | Tables): Table[] | null  => {
-    const data = Object.entries(tables);
+    const data = Object.entries(tables) as [string, { rows: Tables['rows']; total: Tables['total']}][];
     
     if(!tables || !data.length) return null;
                     
@@ -12,7 +12,7 @@ export const tablesAdapter = (tables: {} | Tables): Table[] | null  => {
         const { rows, total } = table[1];
 
         return {
-            name,
+            header: name,
             rows,
             total,
         }
