@@ -3,7 +3,6 @@ import { State } from '../types';
 
 export const initialState: State = {
   tables: {},
-  total: 0,
 };
 
 export const reducer = (state: State, action) => {
@@ -40,16 +39,15 @@ export const reducer = (state: State, action) => {
         const {type: __, ...newTable} = action.payload;
         const newAssetsState = [...currentTable, newTable];
         const withSumFuelds = addAssetsSum(newAssetsState);
-        const total = getTotal(withSumFuelds);
+        const tableTotal = getTotal(withSumFuelds);
         
         const newTablesState = {
           ...state,
-          total: state.total + total,
           tables: {
             ...tables,
             [type]: {
               rows: withSumFuelds,
-              total,
+              total: tableTotal,
             },
           }
         };

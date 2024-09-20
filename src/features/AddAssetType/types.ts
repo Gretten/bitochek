@@ -9,5 +9,4 @@ export interface Tables {
   
 export interface State {
     tables: Tables | {};
-    total: number;
 }

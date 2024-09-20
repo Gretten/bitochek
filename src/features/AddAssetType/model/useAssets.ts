@@ -12,6 +12,6 @@ export const useAssets = () => {
         dispatch({ type: 'ADD_ASSET', payload: asset });
     }
 
-    return { tables: state.tables, total: state.total, addTable, addAsset }
+    return { tables: state.tables, addTable, addAsset }
   
 }
