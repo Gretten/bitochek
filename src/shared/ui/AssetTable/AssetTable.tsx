@@ -27,7 +27,7 @@ export const AssetTable = ({ header, rows, total, columns = defaultConfig }: Ass
                     const { name, align } = column;
 
                     return (
-                      <TableCell align={align || "inherit"}>{name}</TableCell>
+                      <TableCell key={name} align={align || "inherit"}>{name}</TableCell>
                     )
                   })
                 }

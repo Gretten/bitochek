@@ -1,11 +1,13 @@
 import { SelectChangeEvent } from "@mui/material/Select/SelectInput";
+import React from "react";
 
 export interface SelectVariantsProps {
     label: string;
-    isRequired?: boolean;
+    required?: boolean;
+    name: string,
     items: {
       value: string;
       name: string;
     }[];
-    onChange: (arg: SelectChangeEvent) => void;
+    onChange: (e: SelectChangeEvent<string>) => void;
 }
