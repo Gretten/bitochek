@@ -42,7 +42,7 @@ export const AddAsset = ({ header = 'Добавить актив', addAsset, onC
             <div className={classes['form-body']}>
                 <SelectVariants 
                     {...register("type")}
-                    label="type"
+                    label="Тип"
                     required
                     items={[
                         {
