@@ -1,35 +1,35 @@
 import TextField from "@mui/material/TextField/TextField"
-import classes from './styles.module.scss'
 import Button from "@mui/material/Button/Button";
-import {SelectVariants} from "@/shared/ui";
-import {useFormValidation} from "../model/useFormValidation";
 import CloseIcon from '@mui/icons-material/Close';
+import classes from './styles.module.scss'
+import { SelectVariants } from "@/shared/ui";
+import { useFormValidation } from "../model";
 
 export const AddAsset = ({ header = 'Добавить актив', addAsset, onClose }) => {
 
-    const {
-        values,
-        errors,
-        errorMessages,
-        handleChange,
-        handleSubmit,
-    } = useFormValidation({
-        type: '',
-        name: '',
-        count: '',
-        price: '',
-    });
+    interface Inputs {
+        type: string,
+        name: string,
+        count: string,
+        price: string,
+    }
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-        handleSubmit(() => addAsset(values));
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useFormValidation<Inputs>();
+
+    const onSubmit = (data: Inputs) => {
+        addAsset(data);
         onClose();
     };
 
     return (
         <form 
-        className={classes['add-asset-form']} 
-            onSubmit={onSubmit}>
+            className={classes['add-asset-form']} 
+            onSubmit={handleSubmit(onSubmit)}
+        >
             <div className={classes['form-header']}>
                 <span>{header}</span>
                 <span 
@@ -41,9 +41,9 @@ export const AddAsset = ({ header = 'Добавить актив', addAsset, onC
             </div>
             <div className={classes['form-body']}>
                 <SelectVariants 
-                    onChange={handleChange} 
-                    label="Тип" 
-                    isRequired
+                    {...register("type")}
+                    label="type"
+                    required
                     items={[
                         {
                             name: 'Криптовалюта',
@@ -56,35 +56,28 @@ export const AddAsset = ({ header = 'Добавить актив', addAsset, onC
                     ]}
                 />
                 <TextField
+                    {...register('name')}
                     required
                     id="outlined-required"
                     label="Название"
-                    name="name"
-                    helperText={errorMessages.name || null}
-                    value={values.name}
-                    onChange={handleChange}
-                    error={errors.name}
+                    helperText={errors.name || null}
+                    error={!!errors.name}
                 />
                 <TextField
+                    {...register('count')}
                     required
                     id="outlined-required"
                     label="Количество"
-                    name="count"
-                    helperText={errorMessages.count || null}
-                    error={errors.count}
-                    value={values.count}
-                    onChange={handleChange}
-                    
+                    helperText={errors.count || null}
+                    error={!!errors.count}
                 />
                 <TextField
+                    {...register('price')}
                     required
                     id="outlined-required"
                     label="Цена (USD)"
-                    name="price"
-                    helperText={errorMessages.price || null}
-                    error={errors.price}
-                    value={values.price}
-                    onChange={handleChange}
+                    helperText={errors.price || null}
+                    error={!!errors.price}
                 />
             </div>
             <div className={classes['form-footer']}>

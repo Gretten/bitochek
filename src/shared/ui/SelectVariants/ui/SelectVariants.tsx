@@ -5,11 +5,11 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useState } from 'react';
 import { SelectVariantsProps } from '../types';
 
-export const SelectVariants = ({ onChange, label = "Тип", isRequired = false, items }: SelectVariantsProps) => {
+export const SelectVariants = ({ onChange, label = "Тип", items, name, required = false }: SelectVariantsProps) => {
 
   const [value, setValue] = useState<string>("");
     
-  const handleChange = (event: SelectChangeEvent) => {
+  const handleChange = (event: SelectChangeEvent<string>) => {
     if(event && event.target) {
         setValue(event.target.value)
         onChange(event)
@@ -18,14 +18,14 @@ export const SelectVariants = ({ onChange, label = "Тип", isRequired = false,
 
   return (
     <div>
-      <FormControl fullWidth sx={{ m: 1, minWidth: 200 }} style={{ margin: '0'}} required={isRequired}>
+      <FormControl fullWidth sx={{ m: 1, minWidth: 200 }} style={{ margin: '0'}} required={required}>
         <InputLabel id="label">{label}</InputLabel>
         <Select
           label="Тип"
           labelId="label"
           id="select"
           value={value}
-          name='type'
+          name={name}
           onChange={handleChange}
         >
           

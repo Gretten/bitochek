@@ -7,11 +7,13 @@ import { Price } from "@/enteties/Price";
 import { useAddAssetModal } from "@/features/AddAsset";
 import { AddAsset } from "@/features/AddAsset/ui/AddAsset";
 import { AssetsContext } from '@/features/AddAssetType'
+import { tablesAdapter } from "../lib/tablesAdapter";
 
 export const PortfolioPage = () => {    
     const { isOpened, toggleModal } = useAddAssetModal();
 
     const { tables, total, addTable, addAsset } = useContext(AssetsContext);
+    const tablesData = tablesAdapter(tables)
 
     return (
         <div className={classes['portfolio']}>
@@ -53,10 +55,10 @@ export const PortfolioPage = () => {
             <div className={classes["right-column"]}>
                 <div className={classes["assets-widget"]}>
                     <AssetsWidget 
-                        tables={tables}
+                        tables={tablesData}
                         totalPrice={total}
                         header="Активы"
-                        onAdd={toggleModal}
+                        onAddSingleAsset={toggleModal}
                     />
                 </div>
             </div>

@@ -1,46 +1,55 @@
 import classes from './classes.module.scss'
 import Button from '@mui/material/Button/Button';
 import { AssetTable } from '@/shared/ui/';
-import { names } from '../config';
+import { TableRow } from '@/shared/ui/AssetTable/types';
 
-export const AssetsWidget = ({ header, onAdd, tables, totalPrice }) => {   
+export interface Table {
+    header: string;
+    rows: TableRow[];
+    total: number;
+}
 
-    const data = Object.entries(tables);
+interface AssetWidgetProps {
+    header: string;
+    totalPrice: number;
+    onAddSingleAsset: () => void;
+    tables: Table[] | null;
+}
+
+export const AssetsWidget = ({ header, onAddSingleAsset, tables, totalPrice }: AssetWidgetProps) => {   
 
     return (
         <div>
             <div className={classes['header-container']}>
                 <h3 className={classes['header']}>{header}</h3>
-                <Button onClick={onAdd}>Новый актив</Button>
+                <Button onClick={onAddSingleAsset}>Новый актив</Button>
             </div>
 
             <div className={classes['assets-tables']}>
 
                 {
                 
-                data.length > 0 ? data.map((table) => {
+                tables ? tables.map((table) => {
 
-                        const key = table[0] + (Math.random() * 5);
-                        const headerKey = names[table[0]];
-                        const data = table[1];
+                        const { header, rows, total } = table;
                         return (
                             <AssetTable 
-                                key={key}
-                                header={headerKey}
-                                rows={data.rows}
-                                total={data.total}
+                                key={header}
+                                header={header}
+                                rows={rows}
+                                total={total}
                             />
                         )
                     }) : 'Добавьте первый тип актива!'
                 } 
 
-                {
-                data.length > 0 && (
+                {/* {
+                    totalPrice && totalPrice > 0 && (
                         <div className={classes['total']}>
                             ИТОГО: ${totalPrice}
                         </div>
                     )
-                }
+                } */}
             </div>
         </div>
     )
