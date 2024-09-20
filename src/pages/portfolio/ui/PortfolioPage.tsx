@@ -25,6 +25,7 @@ export const PortfolioPage = () => {
                     >
                         <SelectVariants 
                             onChange={(e) => addTable(e.target.value)} 
+                            name="type"
                             label="Тип" 
                             items={[
                                 {
