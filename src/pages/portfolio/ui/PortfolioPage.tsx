@@ -1,51 +1,31 @@
 import { useContext } from "react";
 import classes from './classes.module.scss';
-import { AssetsWidget } from "@/widgets/AssetsWidget";
-import { SelectVariants, ModalOverlay, WidgetWrapper } from "@/shared/ui";
+import { AssetsTableWidget } from "@/widgets/AssetsTableWidget";
+import { ModalOverlay, WidgetWrapper } from "@/shared/ui";
 import { Performance } from '@/enteties/Performance'
 import { Price } from "@/enteties/Price";
 import { useAddAssetModal } from "@/features/AddAsset";
 import { AddAsset } from "@/features/AddAsset/ui/AddAsset";
 import { AssetsContext } from '@/features/AddAssetType'
-import { tablesAdapter, getTotalPrice } from "../lib";
-
+import { getTotalPrice, transformAssetsToTables } from "../lib";
 
 export const PortfolioPage = () => {    
     const { isOpened, toggleModal } = useAddAssetModal();
 
-    const { tables, addTable, addAsset } = useContext(AssetsContext);
-    const tablesData = tablesAdapter(tables);
-    const total = getTotalPrice(tablesData);
+    const { assets, addAsset } = useContext(AssetsContext);
+    const tables = transformAssetsToTables(assets);
+    const totalPrice = getTotalPrice(assets);
 
     return (
         <div className={classes['portfolio']}>
             <div className={classes["left-column"]}>
-                <div className={`${classes["widget"]} ${classes["green"]}`}>
+                 <div className={`${classes["widget"]}`}>
                     <WidgetWrapper 
-                        header="Добавить тип актива"
-                        styles={{ backgroundColor: 'rgba(228, 255, 200, 0.967)'}}
+                        header="Цена портфеля" 
+                        styles={{ backgroundColor: 'rgba(228, 255, 200, 0.967)'}} 
                     >
-                        <SelectVariants 
-                            onChange={(e) => addTable(e.target.value)} 
-                            name="type"
-                            label="Тип" 
-                            items={[
-                                {
-                                    name: 'Криптовалюта',
-                                    value: 'crypto'
-                                },
-                                {
-                                    name: 'Деньги',
-                                    value: 'fiat'
-                                }
-                            ]}
-                        />
-                    </WidgetWrapper>
-                </div>
-                <div className={classes["widget"]}>
-                    <WidgetWrapper header="Цена портфеля" >
                         <Price 
-                            totalPrice={total} 
+                            totalPrice={totalPrice} 
                         />
                     </WidgetWrapper>
                 </div>
@@ -57,9 +37,8 @@ export const PortfolioPage = () => {
             </div>
             <div className={classes["right-column"]}>
                 <div className={classes["assets-widget"]}>
-                    <AssetsWidget 
-                        tables={tablesData}
-                        totalPrice={total}
+                    <AssetsTableWidget 
+                        tables={tables}
                         header="Активы"
                         onAddSingleAsset={toggleModal}
                     />

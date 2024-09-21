@@ -1,0 +1,1 @@
+export { AssetsTableWidget } from './ui/AssetsTableWidget';

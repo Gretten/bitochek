@@ -29,7 +29,7 @@ export function useFormValidation<T>(defaultValues?: T) {
 
     for (const key in values) {
       if (!values[key]) {
-        newErrors[key] = 'This field is required';
+        newErrors[key] = 'Обязательное поле';
       }
     }
 

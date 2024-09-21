@@ -1,25 +1,10 @@
 import { addAssetsSum, getTotal } from '../lib';
-import { State } from '../types';
+import { AssetsState } from '../types';
 
-export const initialState: State = {};
+export const initialState: AssetsState = {};
 
-export const reducer = (state: State, action) => {
+export const reducer = (state: AssetsState, action) => {
     switch (action.type) {
-      // case 'ADD_TABLE':
-      //   if(state.tables[action.payload]) {
-      //       return state;
-      //   };
-
-      //   return {
-      //     ...state,
-      //     tables: {
-      //       ...state.tables,
-      //       [action.payload]: {
-      //         rows: [],
-      //         total: 0,
-      //       },
-      //     },
-      //   };
       case 'ADD_ASSET':
         const { name, type} = action.payload;
         const {type: __, ...assetToAdd} = action.payload;
@@ -29,7 +14,7 @@ export const reducer = (state: State, action) => {
             ...state,
             [type]: {
                ...state[type],
-               assets: [assetToAdd],
+               assets: [addAssetsSum(assetToAdd)],
             }
           };
         };

@@ -1,2 +1,2 @@
+export { transformAssetsToTables } from './transformAssetsToTables';
 export { getTotalPrice } from './getTotalPrice';
-export { tablesAdapter } from './tablesAdapter';

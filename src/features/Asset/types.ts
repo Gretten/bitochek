@@ -18,7 +18,7 @@ export type Asset = {
     sum: number;
 };
 
-export interface State {
+export interface AssetsState {
     [key: string]: { 
         assets: Asset[];
         total: number;

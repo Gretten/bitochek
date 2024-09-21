@@ -21,7 +21,11 @@ export const AddAsset = ({ header = 'Добавить актив', addAsset, onC
       } = useFormValidation<Inputs>();
 
     const onSubmit = (data: Inputs) => {
-        addAsset(data);
+        addAsset({
+            ...data,
+            count: Number(data.count),
+            price: Number(data.price),
+        });
         onClose();
     };
 
