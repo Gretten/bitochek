@@ -1,18 +1,20 @@
 import { createContext } from 'react';
 import { initialState } from './state';
 import { useAssets } from './useAssets';
+import { Asset } from '../types';
 
 export const AssetsContext = createContext({ 
-  tables: initialState.tables, 
   addTable: (newTable: string) => {}, 
-  addAsset: (asset: Record<string, string>) => {}
+  addAsset: <T extends Record<keyof Asset & { type: string }, any>>(asset: T) => {},
+  removeAsset: <T extends Record<keyof Asset & { type: string }, any>>(asset: T) => {},
+  assets: initialState,
 });
 
 export const TableProvider = ({ children }) => {
-    const { tables, addTable, addAsset } = useAssets();
+    const { assets, addTable, addAsset, removeAsset } = useAssets();
 
     return (
-      <AssetsContext.Provider value={{ tables, addTable, addAsset }}>
+      <AssetsContext.Provider value={{ assets, addTable, addAsset, removeAsset }}>
         {children}
       </AssetsContext.Provider>
     );

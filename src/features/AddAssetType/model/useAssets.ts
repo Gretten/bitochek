@@ -12,6 +12,10 @@ export const useAssets = () => {
         dispatch({ type: 'ADD_ASSET', payload: asset });
     }
 
-    return { tables: state.tables, addTable, addAsset }
+    const removeAsset = (asset) => {
+        dispatch({ type: 'REMOVE_ASSET', payload: asset });
+    }
+
+    return { assets: state, addTable, addAsset, removeAsset }
   
 }
