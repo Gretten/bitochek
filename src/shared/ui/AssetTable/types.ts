@@ -6,7 +6,7 @@ interface Column {
 }
 
 export interface TableRow {
-    [key: string]: string;
+    [key: string]: string | number;
 }
 
 export type Columns = Column[];

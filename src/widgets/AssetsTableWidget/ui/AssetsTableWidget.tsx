@@ -11,18 +11,17 @@ export interface Table {
 
 interface AssetWidgetProps {
     header: string;
-    totalPrice: number;
     onAddSingleAsset: () => void;
     tables: Table[] | null;
 }
 
-export const AssetsWidget = ({ header, onAddSingleAsset, tables, totalPrice }: AssetWidgetProps) => {   
+export const AssetsTableWidget = ({ header, tables, onAddSingleAsset }: AssetWidgetProps) => {   
 
     return (
         <div>
             <div className={classes['header-container']}>
                 <h3 className={classes['header']}>{header}</h3>
-                <Button onClick={onAddSingleAsset}>Новый актив</Button>
+                <Button variant="contained" onClick={onAddSingleAsset}>Новый актив</Button>
             </div>
 
             <div className={classes['assets-tables']}>
@@ -42,14 +41,6 @@ export const AssetsWidget = ({ header, onAddSingleAsset, tables, totalPrice }: A
                         )
                     }) : 'Добавьте первый тип актива!'
                 } 
-
-                {/* {
-                    totalPrice && totalPrice > 0 && (
-                        <div className={classes['total']}>
-                            ИТОГО: ${totalPrice}
-                        </div>
-                    )
-                } */}
             </div>
         </div>
     )

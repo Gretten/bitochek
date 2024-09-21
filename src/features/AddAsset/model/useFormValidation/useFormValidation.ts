@@ -1,4 +1,3 @@
-import { SelectChangeEvent } from '@mui/material/Select/SelectInput';
 import React from 'react';
 
 export function useFormValidation<T>(defaultValues?: T) {
@@ -30,7 +29,7 @@ export function useFormValidation<T>(defaultValues?: T) {
 
     for (const key in values) {
       if (!values[key]) {
-        newErrors[key] = 'This field is required';
+        newErrors[key] = 'Обязательное поле';
       }
     }
 

@@ -21,7 +21,11 @@ export const AddAsset = ({ header = 'Добавить актив', addAsset, onC
       } = useFormValidation<Inputs>();
 
     const onSubmit = (data: Inputs) => {
-        addAsset(data);
+        addAsset({
+            ...data,
+            count: Number(data.count),
+            price: Number(data.price),
+        });
         onClose();
     };
 
@@ -42,7 +46,7 @@ export const AddAsset = ({ header = 'Добавить актив', addAsset, onC
             <div className={classes['form-body']}>
                 <SelectVariants 
                     {...register("type")}
-                    label="type"
+                    label="Тип"
                     required
                     items={[
                         {
