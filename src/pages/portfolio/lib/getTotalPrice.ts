@@ -1,4 +1,4 @@
-import { AssetsState } from "@/features/AddAssetType/types";
+import { AssetsState } from "@/features/Asset/types";
 
 export const getTotalPrice = (assets: AssetsState): number => {
     if(!assets) {

@@ -1,5 +1,5 @@
 import AppRouter from "@/app/router/AppRouter"
-import { TableProvider } from "@/features/AddAssetType";
+import { TableProvider } from "@/features/Asset";
 import { Loader } from "@/widgets/Loader/ui/Loader";
 import { Suspense } from "react";
 

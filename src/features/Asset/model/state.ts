@@ -1,4 +1,4 @@
-import { addAssetsSum, getTotal } from '../lib';
+import { addAssetsSum } from '../lib';
 import { AssetsState } from '../types';
 
 export const initialState: AssetsState = {};

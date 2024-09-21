@@ -1,5 +1,5 @@
 import { names } from "@/widgets/AssetsTableWidget/config";
-import { AssetsState } from "@/features/AddAssetType/types";
+import { AssetsState } from "@/features/Asset/types";
 import { Table } from "@/widgets/AssetsTableWidget/ui/AssetsTableWidget";
 
 export const transformAssetsToTables = (assets: AssetsState | {}): Table[] | null => {

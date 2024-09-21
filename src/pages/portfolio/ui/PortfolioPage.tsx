@@ -6,7 +6,7 @@ import { Performance } from '@/enteties/Performance'
 import { Price } from "@/enteties/Price";
 import { useAddAssetModal } from "@/features/AddAsset";
 import { AddAsset } from "@/features/AddAsset/ui/AddAsset";
-import { AssetsContext } from '@/features/AddAssetType'
+import { AssetsContext } from '@/features/Asset'
 import { getTotalPrice, transformAssetsToTables } from "../lib";
 
 export const PortfolioPage = () => {    
